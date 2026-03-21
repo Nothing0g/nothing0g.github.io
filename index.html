@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shubham Kumar — Mechanical Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#070b16;--surface:#0d1426;--card:#111a30;--border:#1c2a45;
+  --cyan:#22d3ee;--cyan-10:rgba(34,211,238,0.1);--cyan-20:rgba(34,211,238,0.2);
+  --orange:#f97316;--orange-10:rgba(249,115,22,0.1);
+  --text:#e2e8f4;--muted:#64748b;--soft:#94a3b8;
+  --fd:'Bebas Neue',cursive;--fb:'Outfit',sans-serif;--r:12px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+
+/* NAV — hidden at top, slides in on scroll */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.7rem 3rem;
+  background:transparent;
+  backdrop-filter:blur(0px);
+  -webkit-backdrop-filter:blur(0px);
+  border-bottom:1px solid transparent;
+  transform:translateY(-110%);
+  opacity:0;
+  transition:
+    transform .48s cubic-bezier(.22,.61,.36,1),
+    opacity .38s ease,
+    background .4s ease,
+    backdrop-filter .4s ease,
+    -webkit-backdrop-filter .4s ease,
+    border-color .4s ease;
+  pointer-events:none;
+  will-change:transform,opacity;
+}
+nav.nav-visible{
+  transform:translateY(0);
+  opacity:1;
+  background:rgba(7,11,22,.88);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  pointer-events:all;
+}
+/* LEFT — identity */
+.nav-identity{
+  display:flex;align-items:center;gap:.85rem;
+  flex-shrink:0;z-index:1;
+}
+.nav-avatar{
+  width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--cyan) 0%,var(--orange) 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-size:1rem;color:var(--bg);
+  letter-spacing:.5px;cursor:pointer;user-select:none;
+  transition:box-shadow .25s;
+}
+.nav-avatar:hover{box-shadow:0 0 0 3px rgba(34,211,238,.35);}
+.nav-name-block{display:flex;flex-direction:column;gap:.05rem;cursor:pointer;}
+.nav-name{font-size:.92rem;font-weight:700;color:var(--text);line-height:1.2;}
+.nav-sub{font-size:.7rem;color:var(--muted);letter-spacing:.02em;}
+
+/* CENTER — absolutely centered so it never gets displaced */
+.nav-links{
+  position:absolute;
+  left:50%;transform:translateX(-50%);
+  display:flex;gap:1.85rem;list-style:none;
+  z-index:0;
+}
+.nav-links a{
+  color:var(--muted);text-decoration:none;
+  font-size:.78rem;font-weight:500;
+  letter-spacing:.07em;text-transform:uppercase;
+  position:relative;transition:color .2s;
+  padding:.2rem 0;white-space:nowrap;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;right:0;
+  height:1px;background:var(--cyan);
+  transform:scaleX(0);transform-origin:left;transition:transform .25s;
+}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{transform:scaleX(1);}
+
+/* RIGHT — actions */
+.nav-actions{
+  display:flex;align-items:center;gap:.6rem;
+  flex-shrink:0;z-index:1;
+}
+.nav-resume{
+  background:transparent;color:var(--soft);border:none;
+  padding:.4rem .85rem;border-radius:6px;
+  font-family:var(--fb);font-size:.8rem;font-weight:600;
+  cursor:pointer;text-decoration:none;transition:color .2s;
+  letter-spacing:.04em;white-space:nowrap;
+}
+.nav-resume:hover{color:var(--text);}
+.nav-contact-btn{
+  background:var(--card);color:var(--text);
+  border:1px solid var(--border);
+  padding:.45rem 1.15rem;border-radius:8px;
+  font-family:var(--fb);font-size:.8rem;font-weight:700;
+  cursor:pointer;text-decoration:none;transition:all .22s;
+  letter-spacing:.04em;white-space:nowrap;
+}
+.nav-contact-btn:hover{background:var(--cyan);color:var(--bg);border-color:var(--cyan);}
+.logo{display:none;}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:8rem 5rem 5rem;}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(34,211,238,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.045) 1px,transparent 1px);background-size:64px 64px;animation:gridPan 25s linear infinite;}
+@keyframes gridPan{to{background-position:64px 64px;}}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(110px);opacity:.12;}
+.blob1{width:600px;height:600px;background:var(--cyan);top:-150px;right:-100px;animation:bf 9s ease-in-out infinite;}
+.blob2{width:450px;height:450px;background:var(--orange);bottom:-100px;left:25%;animation:bf 7s ease-in-out infinite reverse;}
+.blob3{width:300px;height:300px;background:var(--cyan);bottom:20%;right:15%;animation:bf 11s ease-in-out infinite 2s;}
+@keyframes bf{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(20px,-25px) scale(1.06);}}
+.hero-content{position:relative;z-index:1;max-width:1000px;}
+.hero-eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.25rem;opacity:0;animation:fadeUp .6s forwards .2s;display:flex;align-items:center;gap:.75rem;}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--cyan);}
+.hero-name{font-family:var(--fd);font-size:clamp(4.5rem,11vw,10rem);line-height:.9;letter-spacing:.03em;background:linear-gradient(140deg,#fff 30%,var(--cyan) 70%,var(--orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1.25rem;opacity:0;animation:fadeUp .7s forwards .4s;}
+.hero-tagline{font-size:clamp(.95rem,2.2vw,1.25rem);color:var(--soft);font-weight:400;margin-bottom:.5rem;opacity:0;animation:fadeUp .6s forwards .65s;}
+.hero-tagline .hl{color:var(--text);font-weight:600;}
+.hero-sub{font-size:.95rem;color:var(--muted);margin-bottom:3rem;opacity:0;animation:fadeUp .6s forwards .8s;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem;opacity:0;animation:fadeUp .6s forwards 1s;}
+.btn-p{background:var(--cyan);color:var(--bg);border:none;padding:.9rem 2.2rem;border-radius:8px;font-family:var(--fb);font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(34,211,238,.35);}
+.btn-s{background:transparent;color:var(--text);border:1px solid var(--border);padding:.9rem 2.2rem;border-radius:8px;font-family:var(--fb);font-size:.95rem;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block;transition:all .25s;}
+.btn-s:hover{border-color:var(--text);transform:translateY(-3px);}
+.hero-stats{display:flex;gap:3.5rem;opacity:0;animation:fadeUp .6s forwards 1.2s;}
+.hstat-num{font-family:var(--fd);font-size:2.8rem;color:var(--cyan);line-height:1;}
+.hstat-lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-top:.25rem;}
+.hstat{border-left:1px solid var(--border);padding-left:1.5rem;}
+.hstat:first-child{border-left:none;padding-left:0;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+
+/* SECTIONS */
+.sec-full{padding:5.5rem 5rem;border-top:1px solid var(--border);}
+.sec-wrap{max-width:1200px;margin:0 auto;}
+.sec-lbl{font-size:.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);margin-bottom:.6rem;}
+.sec-title{font-family:var(--fd);font-size:clamp(2.5rem,5vw,4.2rem);line-height:.95;letter-spacing:.02em;margin-bottom:1rem;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s,transform .65s;}
+.reveal.vis{opacity:1;transform:none;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:5rem;align-items:start;margin-top:3rem;}
+.about-bio{font-size:1.05rem;line-height:1.9;color:var(--soft);}
+.about-bio p{margin-bottom:1.1rem;}.about-bio strong{color:var(--text);}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.hl-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:border-color .25s,transform .25s;}
+.hl-card:hover{border-color:var(--cyan);transform:translateY(-4px);}
+.hl-num{font-family:var(--fd);font-size:2.2rem;color:var(--cyan);line-height:1;}
+.hl-lbl{font-size:.8rem;color:var(--muted);margin-top:.3rem;line-height:1.4;}
+
+/* TIMELINE */
+.timeline{position:relative;margin-top:2.5rem;}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--cyan),var(--orange) 60%,transparent);}
+.tl-item{padding:0 0 3rem 3.5rem;position:relative;}
+.tl-dot{position:absolute;left:-6px;top:10px;width:13px;height:13px;border-radius:50%;background:var(--cyan);border:2px solid var(--bg);box-shadow:0 0 14px var(--cyan);}
+.tl-dot.o{background:var(--orange);box-shadow:0 0 14px var(--orange);}
+.tl-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:border-color .25s,transform .25s;}
+.tl-card:hover{border-color:var(--cyan);transform:translateX(4px);}
+.tl-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.5rem;}
+.tl-role{font-size:1.1rem;font-weight:700;color:var(--text);}
+.tl-co{font-size:.9rem;color:var(--cyan);font-weight:600;margin-bottom:.25rem;}
+.tl-date{font-size:.78rem;color:var(--muted);background:var(--surface);padding:.3rem .85rem;border-radius:20px;white-space:nowrap;}
+.tl-ul{list-style:none;margin-top:1rem;}
+.tl-ul li{font-size:.9rem;color:var(--soft);padding:.3rem 0 .3rem 1.3rem;position:relative;}
+.tl-ul li::before{content:'→';position:absolute;left:0;color:var(--cyan);font-size:.8rem;}
+.tl-badge{display:inline-block;font-size:.73rem;font-weight:700;color:var(--orange);background:var(--orange-10);border:1px solid var(--orange);padding:.2rem .65rem;border-radius:4px;margin-top:.85rem;}
+
+/* FILTER TABS */
+.filter-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.75rem 0 1.25rem;}
+.ftab{background:transparent;border:1px solid var(--border);color:var(--muted);padding:.4rem 1.15rem;border-radius:20px;font-family:var(--fb);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:.04em;}
+.ftab:hover{border-color:var(--cyan);color:var(--cyan);}
+.ftab.active{background:var(--cyan);color:var(--bg);border-color:var(--cyan);}
+
+/* PROJECT CARDS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.4rem;}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform .3s,border-color .3s,box-shadow .3s;position:relative;}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--orange));transform:scaleX(0);transform-origin:left;transition:transform .35s;z-index:2;}
+.proj-card:hover{transform:translateY(-7px);border-color:var(--cyan-20);box-shadow:0 22px 55px rgba(0,0,0,.5);}
+.proj-card:hover::before{transform:scaleX(1);}
+.proj-thumb{height:190px;background:var(--surface);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);}
+.proj-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.proj-card:hover .proj-thumb img{transform:scale(1.06);}
+.thumb-ph{display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.3;}
+.thumb-ph .ph-icon{font-size:3rem;}.thumb-ph .ph-txt{font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);}
+.cat-badge{position:absolute;top:.75rem;left:.75rem;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:.25rem .65rem;border-radius:4px;}
+.badge-cad{background:rgba(249,115,22,.18);color:var(--orange);border:1px solid rgba(249,115,22,.35);}
+.badge-sim{background:var(--cyan-10);color:var(--cyan);border:1px solid rgba(34,211,238,.3);}
+.proj-body{padding:1.5rem;}
+.proj-card-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;line-height:1.35;}
+.proj-card-desc{font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.35rem;}
+.tag{font-size:.7rem;font-weight:600;color:var(--cyan);background:var(--cyan-10);border:1px solid rgba(34,211,238,.2);padding:.18rem .6rem;border-radius:4px;}
+.tag.o{color:var(--orange);background:var(--orange-10);border-color:rgba(249,115,22,.2);}
+.proj-card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--border);}
+.proj-result{font-size:.78rem;font-weight:700;color:var(--orange);}
+.proj-hint{font-size:.76rem;color:var(--cyan);}
+.edit-btn-card{display:none;position:absolute;top:.65rem;right:.65rem;z-index:5;background:rgba(7,11,22,.85);border:1px solid var(--border);color:var(--muted);padding:.25rem .6rem;border-radius:5px;font-size:.72rem;cursor:pointer;backdrop-filter:blur(4px);transition:all .2s;}
+.admin-mode .edit-btn-card{display:block;}
+.edit-btn-card:hover{border-color:var(--cyan);color:var(--cyan);}
+.add-proj-btn{display:none;width:100%;background:transparent;border:1.5px dashed rgba(34,211,238,.4);color:var(--cyan);border-radius:var(--r);padding:2.5rem;font-family:var(--fb);font-size:1rem;cursor:pointer;transition:background .2s;margin-top:1.4rem;}
+.admin-mode .add-proj-btn{display:block;}
+.add-proj-btn:hover{background:var(--cyan-10);}
+.edit-ic{display:none;background:none;border:1px solid var(--border);color:var(--muted);padding:.22rem .55rem;border-radius:4px;cursor:pointer;font-size:.7rem;transition:all .2s;vertical-align:middle;margin-left:.5rem;}
+.admin-mode .edit-ic{display:inline-block;}
+.edit-ic:hover{border-color:var(--cyan);color:var(--cyan);}
+
+/* ══════════════════════════════════════════
+   PROJECT VIEWER — SPLIT-PANE OVERLAY
+══════════════════════════════════════════ */
+#pv-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(4,7,14,.9);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1.5rem;}
+#pv-overlay.show{display:flex;}
+.pv-modal{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:1100px;height:88vh;background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;position:relative;animation:pvIn .3s cubic-bezier(.22,.61,.36,1);}
+@keyframes pvIn{from{opacity:0;transform:scale(.96) translateY(14px);}to{opacity:1;transform:none;}}
+.pv-close{position:absolute;top:1rem;right:1rem;z-index:20;background:rgba(13,20,38,.9);border:1px solid var(--border);color:var(--muted);width:34px;height:34px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .2s;}
+.pv-close:hover{border-color:var(--text);color:var(--text);}
+
+/* LEFT PANE */
+.pv-left{background:#050912;border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;}
+.pv-gallery{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.pv-img{width:100%;height:100%;object-fit:contain;display:none;}
+.pv-img.active{display:block;}
+.pv-empty-img{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;width:100%;height:100%;color:var(--border);text-align:center;padding:2.5rem;}
+.pv-empty-img .ei-ico{font-size:4.5rem;opacity:.3;}
+.pv-empty-img p{font-size:.82rem;line-height:1.7;opacity:.35;max-width:200px;}
+.pv-arrows{position:absolute;bottom:1rem;right:1rem;display:flex;gap:.4rem;}
+.pv-arr{background:rgba(13,20,38,.85);border:1px solid var(--border);color:var(--text);width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color .2s;}
+.pv-arr:hover{border-color:var(--cyan);}
+.pv-img-counter{position:absolute;bottom:1rem;left:1rem;font-size:.72rem;color:var(--muted);background:rgba(13,20,38,.85);padding:.25rem .65rem;border-radius:5px;}
+.pv-thumbs{display:flex;gap:.55rem;padding:.8rem 1rem;overflow-x:auto;flex-shrink:0;border-top:1px solid var(--border);min-height:68px;background:var(--card);}
+.pv-thumbs::-webkit-scrollbar{height:2px;}
+.pv-thumb{width:52px;height:46px;border-radius:5px;overflow:hidden;flex-shrink:0;border:2px solid transparent;cursor:pointer;transition:border-color .2s;background:var(--surface);}
+.pv-thumb.active{border-color:var(--cyan);}
+.pv-thumb img{width:100%;height:100%;object-fit:cover;}
+.pv-pdf-row{padding:.8rem 1rem;border-top:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-shrink:0;}
+.pv-pdf-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);}
+.pv-pdf-btn{display:flex;align-items:center;gap:.45rem;background:transparent;border:1px solid var(--border);color:var(--text);padding:.42rem .95rem;border-radius:6px;font-family:var(--fb);font-size:.8rem;cursor:pointer;text-decoration:none;transition:all .2s;white-space:nowrap;}
+.pv-pdf-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+.pv-pdf-btn.off{opacity:.3;cursor:default;pointer-events:none;}
+
+/* ── PDF VIEWER OVERLAY ── */
+#pdf-viewer-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(4,7,14,.96);
+  flex-direction:column;
+}
+#pdf-viewer-overlay.show{display:flex;}
+.pdf-viewer-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.75rem 1.5rem;
+  background:var(--card);border-bottom:1px solid var(--border);
+  flex-shrink:0;gap:1rem;
+}
+.pdf-viewer-title{
+  font-size:.88rem;font-weight:600;color:var(--text);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.pdf-viewer-actions{display:flex;align-items:center;gap:.6rem;flex-shrink:0;}
+.pdf-close-btn{
+  background:transparent;border:1px solid var(--border);
+  color:var(--muted);width:32px;height:32px;border-radius:7px;
+  cursor:pointer;font-size:1rem;display:flex;
+  align-items:center;justify-content:center;transition:all .2s;
+}
+.pdf-close-btn:hover{border-color:var(--text);color:var(--text);}
+.pdf-dl-btn{
+  display:flex;align-items:center;gap:.5rem;
+  background:transparent;border:1px solid var(--border);
+  color:var(--soft);padding:.35rem .9rem;border-radius:7px;
+  font-family:var(--fb);font-size:.78rem;font-weight:600;
+  cursor:pointer;text-decoration:none;transition:all .2s;white-space:nowrap;
+}
+.pdf-dl-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+.pdf-iframe-wrap{
+  flex:1;position:relative;overflow:hidden;
+  background:#1a1a1a;
+}
+.pdf-iframe-wrap iframe{
+  width:100%;height:100%;border:none;display:block;
+}
+.pdf-loading{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1rem;
+  color:var(--muted);font-size:.9rem;
+  background:#1a1a1a;pointer-events:none;
+}
+.pdf-loading.hidden{display:none;}
+.pdf-spinner{
+  width:36px;height:36px;border:3px solid var(--border);
+  border-top-color:var(--cyan);border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* RIGHT PANE */
+.pv-right{display:flex;flex-direction:column;overflow:hidden;background:var(--card);}
+.pv-scroll{flex:1;overflow-y:auto;padding:2rem 2rem 1rem;}
+.pv-scroll::-webkit-scrollbar{width:3px;}
+.pv-scroll::-webkit-scrollbar-thumb{background:var(--border);}
+.pv-cat-pill{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;padding:.22rem .7rem;border-radius:4px;margin-bottom:.85rem;}
+.pv-title{font-family:var(--fd);font-size:1.85rem;line-height:1.05;color:var(--text);margin-bottom:1.5rem;letter-spacing:.02em;}
+.pv-sec{margin-bottom:1.5rem;}
+.pv-sec-lbl{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--cyan);margin-bottom:.5rem;}
+.pv-sec-body{font-size:.9rem;color:var(--soft);line-height:1.8;}
+.pv-tools-row{display:flex;flex-wrap:wrap;gap:.4rem;}
+.pv-result-box{background:var(--orange-10);border:1px solid rgba(249,115,22,.25);border-left:3px solid var(--orange);border-radius:8px;padding:1rem 1.25rem;}
+.pv-result-box .pv-sec-body{color:var(--text);}
+.pv-empty-txt{color:var(--border);font-style:italic;font-size:.84rem;}
+/* bullet list in viewer */
+.pv-bullet-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.4rem;}
+.pv-bullet-list li{
+  font-size:.9rem;color:var(--soft);line-height:1.7;
+  padding-left:1.4rem;position:relative;
+}
+.pv-bullet-list li::before{
+  content:'→';
+  position:absolute;left:0;top:0;
+  color:var(--cyan);font-size:.8rem;line-height:1.9;
+}
+/* bullet textarea in modal */
+.bullet-ta{line-height:1.8;letter-spacing:.01em;}
+.pv-foot{padding:1.2rem 2rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:flex-end;gap:1rem;flex-shrink:0;background:var(--surface);}
+
+.pv-edit-from-viewer{display:none;background:transparent;border:1px solid var(--border);color:var(--muted);padding:.55rem 1.1rem;border-radius:7px;font-family:var(--fb);font-size:.82rem;cursor:pointer;transition:all .2s;}
+.admin-mode .pv-edit-from-viewer{display:flex;align-items:center;gap:.4rem;}
+.pv-edit-from-viewer:hover{border-color:var(--cyan);color:var(--cyan);}
+.pv-video{width:100%;height:100%;object-fit:contain;display:none;background:#000;}
+.pv-video.active{display:block;}
+.pv-vid-badge{position:absolute;top:.6rem;left:.6rem;background:rgba(0,0,0,.8);color:var(--orange);font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .6rem;border-radius:4px;display:none;}
+.pv-thumb-vid{display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:#111;color:var(--orange);}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem;}
+.skill-cat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.75rem;transition:border-color .25s;}
+.skill-cat:hover{border-color:var(--cyan-20);}
+.skill-cat-title{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--cyan);margin-bottom:1.2rem;}
+.skill-chips{display:flex;flex-wrap:wrap;gap:.5rem;}
+.chip{font-size:.83rem;color:var(--text);background:var(--surface);border:1px solid var(--border);padding:.35rem .85rem;border-radius:6px;transition:border-color .2s,color .2s;}
+.chip:hover{border-color:var(--cyan);color:var(--cyan);}
+
+/* ACHIEVEMENTS */
+.ach-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+.ach-item{display:flex;align-items:flex-start;gap:1rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.35rem 1.5rem;transition:border-color .25s,transform .25s;}
+.ach-item:hover{border-color:var(--orange);transform:translateY(-3px);}
+.ach-ico{font-size:1.6rem;line-height:1;flex-shrink:0;margin-top:.1rem;}
+.ach-text strong{color:var(--text);display:block;font-size:.92rem;margin-bottom:.25rem;}
+.ach-text{font-size:.85rem;color:var(--soft);line-height:1.5;}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1rem;margin-top:2rem;}
+.cert-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:var(--r);padding:1.2rem 1.5rem;font-size:.88rem;color:var(--text);line-height:1.4;transition:border-left-color .25s,transform .25s;}
+.cert-card:hover{border-left-color:var(--orange);transform:translateX(4px);}
+
+/* CONTACT */
+.contact-wrap{max-width:620px;margin:0 auto;text-align:center;padding:6rem 2rem;}
+.contact-desc{color:var(--muted);font-size:1.05rem;margin-bottom:2.5rem;}
+.contact-links{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;}
+.c-link{display:flex;align-items:center;gap:.55rem;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.8rem 1.6rem;color:var(--text);text-decoration:none;font-size:.9rem;transition:all .25s;}
+.c-link:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-3px);}
+footer{text-align:center;padding:2.5rem 2rem;border-top:1px solid var(--border);color:var(--muted);font-size:.82rem;line-height:1.8;}
+
+/* ADMIN BAR */
+.admin-bar{position:fixed;bottom:2rem;right:2rem;z-index:200;display:none;background:var(--card);border:1px solid var(--cyan);border-radius:12px;padding:.85rem 1.25rem;align-items:center;gap:.75rem;box-shadow:0 8px 40px rgba(0,0,0,.6);}
+.admin-bar.show{display:flex;}
+.admin-lbl{font-size:.75rem;font-weight:700;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;}
+.abtn{background:var(--surface);color:var(--text);border:1px solid var(--border);padding:.35rem .9rem;border-radius:6px;font-family:var(--fb);font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.abtn:hover{border-color:var(--cyan);color:var(--cyan);}
+.abtn.active{background:var(--cyan);color:var(--bg);border-color:var(--cyan);}
+.abtn.danger{border-color:#ef4444;color:#ef4444;}
+.abtn.danger:hover{background:#ef4444;color:#fff;}
+
+/* OVERLAYS */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:400;align-items:center;justify-content:center;padding:1.5rem;}
+.overlay.show{display:flex;}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2.25rem;width:100%;max-width:620px;max-height:92vh;overflow-y:auto;}
+.modal::-webkit-scrollbar{width:3px;}
+.modal h3{font-family:var(--fd);font-size:2rem;color:var(--cyan);margin-bottom:1.75rem;}
+.modal label{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:.4rem;margin-top:1.1rem;}
+.modal label:first-of-type{margin-top:0;}
+.modal input,.modal textarea,.modal select{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.7rem 1rem;border-radius:7px;font-family:var(--fb);font-size:.9rem;outline:none;transition:border-color .2s;resize:vertical;}
+.modal input:focus,.modal textarea:focus{border-color:var(--cyan);}
+.modal select option{background:var(--surface);}
+.modal-foot{display:flex;gap:.75rem;justify-content:flex-end;margin-top:1.75rem;}
+.modal-foot button{padding:.6rem 1.5rem;border-radius:7px;font-family:var(--fb);font-size:.88rem;cursor:pointer;font-weight:600;}
+.btn-save{background:var(--cyan);color:var(--bg);border:none;}
+.btn-save:hover{opacity:.85;}
+.btn-cancel{background:transparent;color:var(--muted);border:1px solid var(--border);}
+.btn-cancel:hover{border-color:var(--text);color:var(--text);}
+.btn-del{background:transparent;color:#ef4444;border:1px solid #ef4444;margin-right:auto;}
+.btn-del:hover{background:#ef4444;color:#fff;}
+.field-hint{font-size:.73rem;color:var(--muted);margin-top:.3rem;line-height:1.5;}
+.img-list{display:flex;flex-direction:column;gap:.5rem;margin-top:.4rem;}
+.img-row{display:flex;gap:.5rem;align-items:center;}
+.img-row input{flex:1;}
+.img-row button{flex-shrink:0;background:none;border:1px solid #ef4444;color:#ef4444;border-radius:5px;padding:.38rem .65rem;cursor:pointer;font-size:.78rem;}
+.img-row button:hover{background:#ef4444;color:#fff;}
+.add-img-row{background:none;border:1px dashed rgba(34,211,238,.4);color:var(--cyan);border-radius:5px;padding:.42rem 1rem;font-family:var(--fb);font-size:.8rem;cursor:pointer;transition:background .2s;margin-top:.3rem;}
+.add-img-row:hover{background:var(--cyan-10);}
+.pwd-modal{max-width:380px;text-align:center;}
+.pwd-modal input{text-align:center;letter-spacing:.2em;font-size:1.1rem;}
+.pwd-err{color:#ef4444;font-size:.8rem;margin-top:.6rem;display:none;}
+.toast{position:fixed;bottom:6.5rem;left:50%;transform:translateX(-50%);background:var(--surface);color:var(--text);padding:.75rem 1.5rem;border-radius:8px;font-size:.88rem;z-index:700;border:1px solid var(--cyan);box-shadow:0 4px 20px rgba(0,0,0,.5);opacity:1;transition:opacity .35s;pointer-events:none;white-space:nowrap;}
+
+/* UPLOAD ZONES */
+.upload-zone{
+  border:1.5px dashed rgba(34,211,238,.35);border-radius:10px;
+  padding:1.25rem 1rem;text-align:center;cursor:pointer;
+  transition:border-color .25s,background .25s;
+  margin-top:.4rem;background:rgba(13,20,38,.5);
+}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--cyan);background:var(--cyan-10);}
+.upload-zone.has-file{border-color:var(--orange);background:var(--orange-10);}
+.uz-icon{font-size:1.6rem;line-height:1;margin-bottom:.35rem;}
+.uz-txt{font-size:.88rem;color:var(--text);font-weight:600;}
+.uz-txt span{color:var(--cyan);}
+.uz-sub{font-size:.72rem;color:var(--muted);margin-top:.2rem;}
+.img-preview-grid{
+  display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.65rem;
+}
+.img-preview-item{
+  position:relative;width:74px;height:66px;border-radius:7px;
+  overflow:hidden;border:1.5px solid var(--border);flex-shrink:0;
+  background:var(--surface);
+}
+.img-preview-item img{width:100%;height:100%;object-fit:cover;}
+.img-preview-del{
+  position:absolute;top:2px;right:2px;
+  background:rgba(0,0,0,.75);color:#fff;
+  border:none;border-radius:4px;width:18px;height:18px;
+  cursor:pointer;font-size:.65rem;display:flex;
+  align-items:center;justify-content:center;
+  transition:background .15s;
+}
+.img-preview-del:hover{background:#ef4444;}
+
+/* RESPONSIVE */
+@media(max-width:1000px){.pv-modal{grid-template-columns:1fr;height:auto;max-height:92vh;}.pv-left{height:260px;max-height:260px;}.pv-right{max-height:55vh;}}
+@media(max-width:900px){
+  nav{padding:.7rem 1.75rem;}
+  .nav-links{display:none;}
+  .nav-sub{display:none;}
+  #hero,.sec-full{padding-left:1.75rem;padding-right:1.75rem;}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .skills-grid{grid-template-columns:1fr 1fr;}
+  .ach-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:2rem;}
+}
+@media(max-width:600px){.skills-grid{grid-template-columns:1fr;}.hero-stats{flex-wrap:wrap;}.admin-bar{right:1rem;left:1rem;bottom:1rem;justify-content:center;flex-wrap:wrap;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <!-- LEFT: identity -->
+  <div class="nav-identity">
+    <div class="nav-avatar" id="logo">SK</div>
+    <div class="nav-name-block" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <span class="nav-name">Shubham Kumar</span>
+      <span class="nav-sub">Mechanical Engineering &nbsp;·&nbsp; CAD &nbsp;·&nbsp; Simulation</span>
+    </div>
+  </div>
+  <!-- CENTER: links -->
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certs</a></li>
+  </ul>
+  <!-- RIGHT: actions -->
+  <div class="nav-actions">
+    <a class="nav-resume" href="javascript:void(0)" onclick="openResumeViewer()">Resume ↗</a>
+    <a class="nav-contact-btn" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-blob blob1"></div><div class="hero-blob blob2"></div><div class="hero-blob blob3"></div>
+  <div class="hero-content" id="hero-content">
+    <!-- rendered by renderHero() -->
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="sec-full" id="about"><div class="sec-wrap" id="about-wrap">
+  <!-- rendered by renderAbout() -->
+</div></div>
+
+<!-- EXPERIENCE -->
+<div class="sec-full" id="experience"><div class="sec-wrap">
+  <div class="sec-lbl reveal">Work Experience</div>
+  <h2 class="sec-title reveal">Internships</h2>
+  <div class="timeline" id="timeline"></div>
+</div></div>
+
+<!-- PROJECTS -->
+<div class="sec-full" id="projects"><div class="sec-wrap">
+  <div class="sec-lbl reveal">Portfolio</div>
+  <div style="display:flex;align-items:baseline;gap:.75rem;" class="reveal">
+    <h2 class="sec-title" style="margin-bottom:0;">Selected Projects</h2>
+    <button class="edit-ic" onclick="openAddProj()">＋ Add</button>
+  </div>
+  <div class="filter-tabs">
+    <button class="ftab active" onclick="filterProjs('all',this)">All Projects</button>
+    <button class="ftab" onclick="filterProjs('CAD',this)">CAD</button>
+    <button class="ftab" onclick="filterProjs('Simulation',this)">Simulation</button>
+  </div>
+  <div class="proj-grid" id="proj-grid"></div>
+  <button class="add-proj-btn" onclick="openAddProj()">＋ Add New Project</button>
+</div></div>
+
+<!-- SKILLS -->
+<div class="sec-full" id="skills"><div class="sec-wrap">
+  <div class="sec-lbl reveal">Capabilities</div>
+  <h2 class="sec-title reveal">Skills &amp; Tools</h2>
+  <div class="skills-grid" id="skills-grid"></div>
+</div></div>
+
+<!-- ACHIEVEMENTS -->
+<div class="sec-full" id="achievements"><div class="sec-wrap">
+  <div class="sec-lbl reveal">Recognition</div>
+  <h2 class="sec-title reveal">Achievements</h2>
+  <div class="ach-grid" id="ach-grid"></div>
+</div></div>
+
+<!-- CERTIFICATIONS -->
+<div class="sec-full" id="certifications"><div class="sec-wrap">
+  <div class="sec-lbl reveal">Credentials</div>
+  <h2 class="sec-title reveal">Certifications</h2>
+  <div class="certs-grid" id="certs-grid"></div>
+</div></div>
+
+<!-- CONTACT -->
+<div class="sec-full" id="contact">
+  <div class="contact-wrap">
+    <div class="sec-lbl reveal">Get In Touch</div>
+    <h2 class="sec-title reveal">Let's Connect</h2>
+    <p class="contact-desc reveal">Open to internship opportunities, research collaborations, and engineering discussions.</p>
+    <div class="contact-links reveal" id="c-links"></div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Shubham Kumar &nbsp;·&nbsp; Mechanical Engineering, DTU</p>
+  <p style="margin-top:.4rem;font-size:.75rem;opacity:.6;">Built with precision and purpose</p>
+</footer>
+
+<!-- ADMIN BAR -->
+<div class="admin-bar" id="admin-bar">
+  <span class="admin-lbl">🔧 Admin</span>
+  <button class="abtn" id="edit-tog" onclick="toggleEdit()">Edit: OFF</button>
+  <button class="abtn" onclick="openSettings()">⚙️ Settings</button>
+  <button class="abtn" onclick="saveAll()">💾 Save</button>
+  <button class="abtn danger" onclick="logoutAdmin()">Exit</button>
+</div>
+
+<!-- ══════════════════════════════════
+     PROJECT VIEWER SPLIT-PANE
+══════════════════════════════════ -->
+<div id="pv-overlay" onclick="pvBgClick(event)">
+  <div class="pv-modal" id="pv-modal">
+    <button class="pv-close" onclick="closePV()">✕</button>
+
+    <!-- LEFT: media -->
+    <div class="pv-left">
+      <div class="pv-gallery" id="pv-gallery">
+        <div class="pv-vid-badge" id="pv-vid-badge">▶ VIDEO</div>
+        <!-- images injected -->
+        <div class="pv-img-counter" id="pv-counter" style="display:none;"></div>
+        <div class="pv-arrows" id="pv-arrows" style="display:none;">
+          <button class="pv-arr" onclick="pvSlide(-1)">‹</button>
+          <button class="pv-arr" onclick="pvSlide(1)">›</button>
+        </div>
+      </div>
+      <div class="pv-thumbs" id="pv-thumbs"></div>
+      <div class="pv-pdf-row">
+        <span class="pv-pdf-lbl">📐 Detailed Drawing / Report</span>
+        <a class="pv-pdf-btn off" id="pv-pdf-btn" href="#" target="_blank">📄 View PDF</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: content -->
+    <div class="pv-right">
+      <div class="pv-scroll" id="pv-scroll">
+        <div id="pv-pill" class="pv-cat-pill"></div>
+        <div class="pv-title" id="pv-title"></div>
+
+        <div class="pv-sec">
+          <div class="pv-sec-lbl">Why This Project?</div>
+          <div class="pv-sec-body" id="pv-why"></div>
+        </div>
+        <div class="pv-sec">
+          <div class="pv-sec-lbl">How I Solved the Problem</div>
+          <div class="pv-sec-body" id="pv-approach"></div>
+        </div>
+        <div class="pv-sec">
+          <div class="pv-sec-lbl">Tools Used</div>
+          <div class="pv-tools-row" id="pv-tools"></div>
+        </div>
+        <div class="pv-sec">
+          <div class="pv-sec-lbl">Engineering Work Done</div>
+          <div class="pv-sec-body" id="pv-work"></div>
+        </div>
+        <div class="pv-sec">
+          <div class="pv-sec-lbl">Result &amp; Conclusion</div>
+          <div class="pv-result-box">
+            <div class="pv-sec-body" id="pv-result"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pv-foot">
+        <button class="pv-edit-from-viewer" id="pv-edit-from-viewer-btn" onclick="openEditFromViewer()">✏️ Edit Project</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT EDIT MODAL -->
+<div class="overlay" id="proj-ov">
+  <div class="modal" style="max-width:640px;">
+    <h3 id="proj-modal-h">Add Project</h3>
+    <label>Project Title *</label>
+    <input type="text" id="pi-title" placeholder="e.g. Topology Optimization of Bike Suspension Arm">
+    <label>Category</label>
+    <select id="pi-cat"><option value="CAD">CAD</option><option value="Simulation">Simulation</option></select>
+    <label>Short Description (shown on card)</label>
+    <textarea id="pi-desc" rows="2" placeholder="2-line summary for the card..."></textarea>
+    <label>Why This Project?</label>
+    <textarea id="pi-why" rows="3" class="bullet-ta" placeholder="• Each line becomes a bullet point&#10;• Press Enter to add a new bullet&#10;• Why did you pick this project?"></textarea>
+    <p class="field-hint">Each line = one bullet point in the viewer.</p>
+    <label>How You Solved the Problem</label>
+    <textarea id="pi-approach" rows="4" class="bullet-ta" placeholder="• Describe your methodology&#10;• Step-by-step approach&#10;• Tools and techniques used"></textarea>
+    <p class="field-hint">Each line = one bullet point in the viewer.</p>
+    <label>Engineering Work Done</label>
+    <textarea id="pi-work" rows="4" class="bullet-ta" placeholder="• Detailed technical steps&#10;• Analysis / modelling work&#10;• Key decisions made"></textarea>
+    <p class="field-hint">Each line = one bullet point in the viewer.</p>
+    <label>Result / Conclusion</label>
+    <textarea id="pi-result" rows="3" class="bullet-ta" placeholder="• Key result or achievement&#10;• Quantified improvement if any&#10;• What you learned"></textarea>
+    <p class="field-hint">Each line = one bullet point in the viewer.</p>
+    <label>Tools / Tags (comma-separated)</label>
+    <input type="text" id="pi-tags" placeholder="e.g. ANSYS, FEA, SolidWorks">
+    <label>Project Images</label>
+    <div class="upload-zone" id="img-upload-zone">
+      <div class="uz-icon">🖼️</div>
+      <div class="uz-txt">Click to upload images <span>or drag &amp; drop</span></div>
+      <div class="uz-sub">PNG, JPG, WEBP — multiple files OK</div>
+    </div>
+    <div class="img-preview-grid" id="img-preview-grid"></div>
+    <p class="field-hint">Images are stored directly in the site — no external hosting needed.</p>
+
+    <label>Detailed Drawing / Report (PDF)</label>
+    <div class="upload-zone" id="pdf-upload-zone">
+      <div class="uz-icon">📄</div>
+      <div class="uz-txt" id="pdf-uz-txt">Click to upload PDF drawing or report</div>
+      <div class="uz-sub">PDF files only</div>
+    </div>
+
+    <label>Project Video URL (optional)</label>
+    <input type="text" id="pi-vid-url" placeholder="YouTube embed URL, Google Drive link, or direct .mp4 URL">
+    <p class="field-hint">Paste a YouTube embed link (youtube.com/embed/...), Google Drive share link, or any direct video URL. Video will play inside the project viewer.</p>
+    <div class="modal-foot">
+      <button class="btn-del" id="p-del-btn" onclick="deleteProj()">🗑 Delete</button>
+      <button class="btn-cancel" onclick="closeOverlay('proj-ov')">Cancel</button>
+      <button class="btn-save" onclick="saveProj()">Save Project</button>
+    </div>
+  </div>
+</div>
+
+<!-- PASSWORD MODAL -->
+<div class="overlay" id="pwd-ov">
+  <div class="modal pwd-modal">
+    <h3>🔐 Admin Access</h3>
+    <label>Password</label>
+    <input type="password" id="pwd-inp" placeholder="••••••••" onkeyup="if(event.key==='Enter')checkPwd()">
+    <p class="pwd-err" id="pwd-err">Incorrect password. Try again.</p>
+    <div class="modal-foot" style="margin-top:1.25rem;">
+      <button class="btn-cancel" onclick="closeOverlay('pwd-ov')">Cancel</button>
+      <button class="btn-save" onclick="checkPwd()">Enter</button>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="overlay" id="set-ov">
+  <div class="modal" style="max-width:580px;">
+    <h3>&#9881;&#65039; Settings</h3>
+
+    <!-- GITHUB CONFIG -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-bottom:1.25rem;">
+      <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--cyan);margin-bottom:.9rem;">&#128279; GitHub Storage</div>
+      <label style="margin-top:0;">Personal Access Token</label>
+      <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+      <p class="field-hint">Create at github.com &rarr; Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Fine-grained. Give it <strong>Contents: Read &amp; Write</strong> on your repo. Token is stored <strong>only in this browser</strong> &mdash; never pushed to GitHub. Also set your repo to <strong>Private</strong> to avoid GitHub secret scanning.</p>
+      <label>GitHub Username</label>
+      <input type="text" id="gh-owner" placeholder="your-github-username">
+      <label>Repository Name</label>
+      <input type="text" id="gh-repo" placeholder="my-portfolio-data">
+      <label>Branch</label>
+      <input type="text" id="gh-branch" placeholder="main">
+      <div style="display:flex;gap:.65rem;margin-top:.85rem;align-items:center;">
+        <button onclick="testGitHubConnection()" style="background:transparent;border:1px solid var(--cyan);color:var(--cyan);padding:.4rem 1rem;border-radius:6px;font-family:var(--fb);font-size:.8rem;cursor:pointer;transition:all .2s;">&#10003; Test Connection</button>
+        <button onclick="syncFromGitHub()" style="background:transparent;border:1px solid var(--border);color:var(--soft);padding:.4rem 1rem;border-radius:6px;font-family:var(--fb);font-size:.8rem;cursor:pointer;transition:all .2s;">&#8595; Pull from GitHub</button>
+        <span id="gh-status" style="font-size:.78rem;color:var(--muted);"></span>
+      </div>
+    </div>
+
+    <label>Resume — Upload PDF directly</label>
+    <div class="upload-zone" id="resume-upload-zone" style="cursor:pointer;">
+      <div class="uz-icon">&#128196;</div>
+      <div class="uz-txt" id="resume-uz-txt">Click or drag to upload your Resume PDF</div>
+      <div class="uz-sub">Stored in the browser &mdash; opens in on-site viewer</div>
+    </div>
+    <div id="resume-uploaded-actions" style="display:none;margin-top:.5rem;display:none;">
+      <button onclick="clearResumePdf()" style="background:none;border:1px solid #ef4444;color:#ef4444;padding:.3rem .8rem;border-radius:5px;cursor:pointer;font-family:var(--fb);font-size:.78rem;">&#10005; Remove uploaded PDF</button>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:1rem;margin:.9rem 0 .2rem;opacity:.45;">
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+      <span style="font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;">OR — paste a link</span>
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+    </div>
+
+    <label>Resume URL (Google Drive, Dropbox, etc.)</label>
+    <input type="text" id="si-resume-url" placeholder="https://drive.google.com/file/d/...">
+    <p class="field-hint">Used as fallback if no PDF is uploaded above. Make sure the link is set to &ldquo;Anyone with link can view&rdquo;.</p>
+
+    <label style="margin-top:1.5rem;">Email</label><input type="text" id="si-email">
+    <label>Phone</label><input type="text" id="si-phone">
+    <label>LinkedIn URL</label><input type="text" id="si-linkedin">
+    <label>Location</label><input type="text" id="si-location">
+    <label>Change Admin Password (leave blank to keep current)</label>
+    <input type="text" id="si-pwd" placeholder="New password...">
+    <div class="modal-foot">
+      <button class="btn-cancel" onclick="closeOverlay('set-ov')">Cancel</button>
+      <button class="btn-save" onclick="saveSettings()">Save Settings</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════ DEFAULT DATA ═══════════════════════════ */
+const DEFAULTS = {
+  adminPassword:"DTU2027",
+  hero:{
+    eyebrow:"Mechanical Engineering · Delhi Technological University",
+    name:"SHUBHAM KUMAR",
+    tagline:["Plant Design","FEA & CFD Simulation","CAD Modelling"],
+    sub:"B.Tech Mechanical Engineering · Class of 2027",
+    stats:[{num:"2",lbl:"Internships"},{num:"6",lbl:"Projects"},{num:"5",lbl:"Certifications"},{num:"'27",lbl:"Graduation"}]
+  },
+  about:{
+    heading:"Engineering With Purpose",
+    bio:"I'm a pre-final year Mechanical Engineering student at Delhi Technological University, with hands-on internship experience at Engineers India Limited (EIL) and DRDO-SSPL.\n\nMy work spans plant design and piping layouts in AutoCAD, pipe stress analysis using CAESAR II, and research into cryogenic refrigeration systems for precision defence electronics. I'm passionate about simulation-driven engineering — from FEA topology optimization to CFD aerodynamic analysis and detailed CAD modelling.\n\nRecognized as a Dell Aspire Scholar (2023) and NCC Independence Day Cadet who represented Delhi at Red Fort, I bring technical depth, curiosity, and a drive to build things that work in the real world.",
+    highlights:[
+      {num:"EIL",lbl:"Plant Design Intern\nEngineers India Limited · Gurugram"},
+      {num:"DRDO",lbl:"Research Intern\nSSPL · New Delhi"},
+      {num:"DTU",lbl:"Mechanical Engineering\nClass of 2027"},
+      {num:"Dell",lbl:"Aspire Scholar 2023\nMichael & Susan Dell Foundation"}
+    ]
+  },
+  resumeKey:null,resumeName:null,resumeUrl:"",
+  github:{owner:"",repo:"",branch:"main"},
+  contact:{email:"shubham1sure@gmail.com",phone:"+91-7836878701",linkedin:"https://www.linkedin.com/in/shubham-kumar-diff/",location:"New Delhi, Delhi"},
+  experience:[
+    {role:"Plant Design Intern",company:"Engineers India Limited (EIL)",date:"Jun '25 – Jul '25  ·  Gurugram",color:"cyan",
+     bullets:["Drafted and edited piping layouts in AutoCAD for live projects, improving drawing accuracy.",
+              "Collaborated with senior engineers during design reviews; learned industry drawing standards.",
+              "Supported pipe stress analysis using CAESAR II and understood its impact on fabrication accuracy.",
+              "Received an 'Excellent' rating in final performance evaluation."],badge:"★ Excellent Performance Rating"},
+    {role:"Research Intern",company:"Solid State Physics Laboratory (SSPL), DRDO",date:"Dec '25 – Jan '26  ·  New Delhi",color:"orange",
+     bullets:["Analyzed thermodynamic principles of Pulse Tube and Dilution cooling for ultra-low temperature refrigeration.",
+              "Studied heat transfer behavior in cryogenic systems for precision defence electronics and sensing.",
+              "Authored technical report: \"Cryogenic Refrigeration Using Pulse Tube and Dilution Cooling.\""],badge:""}
+  ],
+  projects:[
+    {title:"Topology Optimization of Bike Suspension Arm",category:"Simulation",
+     desc:"Structural FEA and topology optimization to reduce mass while maintaining structural integrity.",
+     why:"",approach:"",
+     work:"Performed structural FEA and topology optimization on a bike suspension arm. Evaluated Von Mises stress distributions, deformation maps, and stiffness-to-weight improvements after iterative redesign cycles.",
+     result:"18–30% weight reduction achieved while maintaining required structural strength.",
+     tags:["ANSYS Workbench","FEA","Topology Optimization","Siemens NX"],
+     imageKeys:[],vidUrl:"",pdfKey:null,pdfName:null},
+    {title:"Aerodynamic Analysis of Rear Car Spoiler",category:"Simulation",
+     desc:"CFD simulation using k-ε / k-ω SST models to study drag and downforce effects on a rear spoiler.",
+     why:"",approach:"",
+     work:"Conducted full CFD simulation: geometry setup, mesh generation, solver configuration with k-ε and k-ω SST turbulence models, post-processing of pressure and velocity contours.",
+     result:"10–25% increase in downforce  ·  5–12% drag reduction via geometry optimization.",
+     tags:["ANSYS Fluent","CFD","k-ω SST","Aerodynamics"],
+     imageKeys:[],vidUrl:"",pdfKey:null,pdfName:null},
+    {title:"Differential Gear Assembly",category:"CAD",
+     desc:"Full 3D modelling of a bevel-gear differential assembly with all sub-components and detailed drawings.",
+     why:"",approach:"",work:"",result:"",
+     tags:["SolidWorks","CAD","Assembly","Bevel Gears"],
+     imageKeys:[],vidUrl:"",pdfKey:null,pdfName:null},
+    {title:"Planetary Gear System",category:"CAD",
+     desc:"Parametric CAD model of a planetary gear set — sun gear, planet gears, ring gear and carrier assembly.",
+     why:"",approach:"",work:"",result:"",
+     tags:["SolidWorks","CAD","Gear Train","Parametric Design"],
+     imageKeys:[],vidUrl:"",pdfKey:null,pdfName:null},
+    {title:"Foldable Chair / Portable Seating",category:"CAD",
+     desc:"Ergonomic folding chair design with mechanism study, BOM, and manufacturing drawings.",
+     why:"",approach:"",work:"",result:"",
+     tags:["SolidWorks","CAD","Mechanism Design","Ergonomics"],
+     imageKeys:[],vidUrl:"",pdfKey:null,pdfName:null},
+    {title:"Water Bottle with Filtration Mechanism",category:"CAD",
+     desc:"Product design of a portable water bottle integrating a compact multi-stage filtration mechanism.",
+     why:"",approach:"",work:"",result:"",
+     tags:["SolidWorks","Fusion 360","Product Design","CAD"],
+     imageKeys:[],vidUrl:"",pdfKey:null,pdfName:null}
+  ],
+  skills:[
+    {cat:"Design Tools",items:["Siemens NX","SolidWorks","AutoCAD","Fusion 360"]},
+    {cat:"Simulation & Analysis",items:["ANSYS Workbench","CAESAR II","CFD","FEA","Topology Optimization"]},
+    {cat:"Programming & Other",items:["Python","MATLAB","Git","MS Office"]}
+  ],
+  achievements:[
+    {icon:"🏅",title:"Dell Aspire Scholar 2023",desc:"Selected among top national scholars by the Michael & Susan Dell Foundation."},
+    {icon:"🇮🇳",title:"NCC Independence Day Cadet",desc:"Represented Delhi at Red Fort. Invited to meet Hon'ble PM Modi for exemplary performance."},
+    {icon:"🎖️",title:"NCC 'A' Certificate Holder",desc:"Attended two national-level NCC camps; represented Delhi cadets."},
+    {icon:"🎭",title:"NSD Summer Workshop Graduate",desc:"Trained under NSD professionals in stage performance, teamwork, and communication."},
+    {icon:"🏠",title:"House Captain — Fraternity",desc:"Led Fraternity house team as Captain during school years."},
+    {icon:"⚙️",title:"STEP-DTU Member",desc:"Active member of STEP-DTU, contributing to technical society events."}
+  ],
+  certifications:[
+    "SOLIDWORKS Advanced Sketching and Reference Geometry",
+    "Intro to Siemens NX: Engineering Essentials and Part Design",
+    "Innovate with ANSYS Simulation Tools",
+    "3D Modeling for 3D Printing and Laser Cutting on Fusion 360",
+    "Applied Computational Fluid Dynamics"
+  ]
+};
+
+/* ═══════════════════════════ STATE ═══════════════════════════ */
+let D = loadData();
+let isAdmin=false, editMode=false, editIdx=-1;
+let pvIdx=-1, pvCur=0, pvImgs=[];
+let activeFilter='all';
+
+function loadData(){
+  try{
+    const s=localStorage.getItem("sk_port_v7");
+    if(s){
+      const parsed=JSON.parse(s);
+      // migrate: drop old resumeUrl field if present
+      return Object.assign({},DEFAULTS,parsed);
+    }
+  }catch(e){}
+  return JSON.parse(JSON.stringify(DEFAULTS));
+}
+function saveAll(){
+  try{localStorage.setItem("sk_port_v7",JSON.stringify(D));toast("✅ Saved!");}
+  catch(e){toast("❌ Save failed.");}
+}
+
+/* ═══════════════════════════ RENDER ═══════════════════════════ */
+function renderAll(){renderHero();renderAbout();renderTimeline();renderProjects();renderSkills();renderAchievements();renderCerts();renderContact();}
+
+function renderTimeline(){
+  const expHtml=D.experience.map((e,i)=>`
+  <div class="tl-item reveal"><div class="tl-dot ${e.color==='orange'?'o':''}"></div>
+  <div class="tl-card">
+    <div class="tl-head"><div><div class="tl-role">${x(e.role)}</div><div class="tl-co">${x(e.company)}</div></div>
+    <div style="display:flex;align-items:center;gap:.5rem;">
+      <div class="tl-date">${x(e.date)}</div>
+      <button class="tl-edit-btn" onclick="openExpEditor(${i})">&#x270F;&#xFE0F;</button>
+    </div></div>
+    <ul class="tl-ul">${e.bullets.map(b=>`<li>${x(b)}</li>`).join('')}</ul>
+    ${e.badge?`<div class="tl-badge">${x(e.badge)}</div>`:''}
+  </div></div>`).join('');
+  const addRow=`<div class="section-add-row"><button class="add-section-btn" onclick="openExpEditor(-1)">&#xFF0B; Add Experience</button></div>`;
+  document.getElementById("timeline").innerHTML=expHtml+addRow;
+}
+
+
+function renderProjects(){
+  const list=activeFilter==='all'?D.projects:D.projects.filter(p=>p.category===activeFilter);
+  document.getElementById("proj-grid").innerHTML=list.map((p,vi)=>{
+    const ri=D.projects.indexOf(p);
+    const hasImg=p.imageKeys&&p.imageKeys.length>0;
+    return `<div class="proj-card reveal" style="transition-delay:${vi*.07}s" onclick="openPV(${ri})">
+      <button class="edit-btn-card" onclick="event.stopPropagation();openEditProj(${ri})">✏️ Edit</button>
+      <div class="proj-thumb" id="thumb-${ri}">
+        ${hasImg
+          ?`<div class="thumb-ph" id="tph-${ri}"><div class="ph-icon">${p.category==='CAD'?'⚙️':'🔬'}</div><div class="ph-txt">Loading...</div></div>`
+          :`<div class="thumb-ph"><div class="ph-icon">${p.category==='CAD'?'⚙️':'🔬'}</div><div class="ph-txt">${p.category} Project</div></div>`
+        }
+                <span class="cat-badge ${p.category==='CAD'?'badge-cad':'badge-sim'}">${p.category}</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-card-title">${x(p.title)}</div>
+        <p class="proj-card-desc">${x(p.desc||'Click to view full project details.')}</p>
+        <div class="proj-tags">${p.tags.map((t,i)=>`<span class="tag ${i%2?'o':''}">${x(t)}</span>`).join('')}</div>
+        <div class="proj-card-foot">
+          ${p.result?`<span class="proj-result">📊 ${x(p.result)}</span>`:'<span></span>'}
+          <span class="proj-hint">View Details →</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterProjs(cat,el){
+  activeFilter=cat;
+  document.querySelectorAll('.ftab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderProjects();setTimeout(()=>{initReveal();loadCardThumbs();},60);
+}
+
+// Load first image for each card thumbnail from IDB
+async function loadCardThumbs(){
+  const list=activeFilter==='all'?D.projects:D.projects.filter(p=>p.category===activeFilter);
+  for(const p of list){
+    const ri=D.projects.indexOf(p);
+    if(!p.imageKeys||!p.imageKeys.length) continue;
+    const dataUrl=await mediaLoad(p.imageKeys[0]);
+    if(!dataUrl) continue;
+    const thumbDiv=document.getElementById("thumb-"+ri);
+    if(!thumbDiv) continue;
+    const img=document.createElement('img');
+    img.src=dataUrl;img.alt=p.title;
+    img.style.cssText='width:100%;height:100%;object-fit:cover;transition:transform .4s;';
+    const ph=document.getElementById("tph-"+ri);
+    if(ph) ph.replaceWith(img);
+    // hover zoom
+    thumbDiv.closest('.proj-card').addEventListener('mouseenter',()=>img.style.transform='scale(1.06)');
+    thumbDiv.closest('.proj-card').addEventListener('mouseleave',()=>img.style.transform='');
+  }
+}
+
+function renderSkills(){
+  const skHtml=D.skills.map((s,i)=>`
+    <div class="skill-cat reveal" style="position:relative;">
+      <button class="card-edit-btn" onclick="openSkillEditor(${i})">&#x270F;&#xFE0F; Edit</button>
+      <div class="skill-cat-title">${x(s.cat)}</div>
+      <div class="skill-chips">${s.items.map(it=>`<span class="chip">${x(it)}</span>`).join('')}</div>
+    </div>`).join('');
+  const addRow=`<div class="section-add-row" style="grid-column:1/-1;"><button class="add-section-btn" onclick="openSkillEditor(-1)">&#xFF0B; Add Category</button></div>`;
+  document.getElementById("skills-grid").innerHTML=skHtml+addRow;
+}
+function renderAchievements(){
+  const achHtml=D.achievements.map((a,i)=>`
+    <div class="ach-item reveal" style="position:relative;">
+      <button class="card-edit-btn" onclick="openAchEditor(${i})">&#x270F;&#xFE0F; Edit</button>
+      <div class="ach-ico">${a.icon}</div>
+      <div class="ach-text"><strong>${x(a.title)}</strong>${x(a.desc)}</div>
+    </div>`).join('');
+  const addRow=`<div class="section-add-row" style="grid-column:1/-1;"><button class="add-section-btn" onclick="openAchEditor(-1)">&#xFF0B; Add Achievement</button></div>`;
+  document.getElementById("ach-grid").innerHTML=achHtml+addRow;
+}
+function renderCerts(){
+  const certHtml=D.certifications.map((c,i)=>`
+    <div class="cert-card reveal" style="position:relative;">
+      <button class="card-edit-btn" onclick="openCertEditor(${i})">&#x270F;&#xFE0F; Edit</button>
+      ${x(c)}
+    </div>`).join('');
+  const addRow=`<div class="section-add-row"><button class="add-section-btn" onclick="openCertEditor(-1)">&#xFF0B; Add Certification</button></div>`;
+  document.getElementById("certs-grid").innerHTML=certHtml+addRow;
+}
+function renderContact(){
+  const c=D.contact;
+  document.getElementById("c-links").innerHTML=`
+    <a class="c-link" href="mailto:${x(c.email)}">&#128231; ${x(c.email)}</a>
+    <a class="c-link" href="tel:${x(c.phone)}">&#128241; ${x(c.phone)}</a>
+    ${c.linkedin&&c.linkedin.length>10?`<a class="c-link" href="${x(c.linkedin)}" target="_blank">&#128188; LinkedIn</a>`:''}
+    <span class="c-link" style="cursor:default;">&#128205; ${x(c.location)}</span>`;
+}
+
+
+
+/* ═══════════════════════════ PROJECT VIEWER ═══════════════════════════ */
+async function openPV(idx){
+  pvIdx=idx; const p=D.projects[idx];
+  pvImgs=[]; pvCur=0;
+
+  const pill=document.getElementById("pv-pill");
+  pill.textContent=p.category;
+  pill.className=`pv-cat-pill ${p.category==='CAD'?'badge-cad':'badge-sim'}`;
+
+  document.getElementById("pv-title").textContent=p.title;
+  setTxt("pv-why",p.why);
+  setTxt("pv-approach",p.approach);
+  setTxt("pv-work",p.work);
+
+  document.getElementById("pv-tools").innerHTML=
+    p.tags.map((t,i)=>`<span class="tag ${i%2?'o':''}">${x(t)}</span>`).join('');
+
+  // Result with bullet support
+  const resEl=document.getElementById("pv-result");
+  if(p.result&&p.result.trim()){
+    const rlines=p.result.split('\n').map(l=>l.replace(/^[•\-\*]\s*/,'')).filter(l=>l.trim());
+    resEl.innerHTML=rlines.length>1
+      ?'<ul class="pv-bullet-list">'+rlines.map(l=>'<li>'+x(l)+'</li>').join('')+'</ul>'
+      :`<strong>${x(rlines[0])}</strong>`;
+  } else {
+    resEl.innerHTML='<span class="pv-empty-txt">Not yet added.</span>';
+  }
+
+  // Gallery — load images + video from IndexedDB
+  const gallery=document.getElementById("pv-gallery");
+  gallery.querySelectorAll('.pv-img,.pv-video,.pv-empty-img').forEach(el=>el.remove());
+  const vidBadge=document.getElementById('pv-vid-badge');
+  if(vidBadge) vidBadge.style.display='none';
+  const pvSlides=[];
+  for(const key of (p.imageKeys||[])){
+    const d=await mediaLoad(key);
+    if(d){pvImgs.push(d);pvSlides.push({type:'img',src:d});}
+  }
+  if(p.vidUrl&&p.vidUrl.trim()){
+    let vUrl=p.vidUrl.trim();
+    // convert YouTube watch link to embed
+    const ytMatch=vUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
+    if(ytMatch) vUrl='https://www.youtube.com/embed/'+ytMatch[1];
+    // convert Google Drive share to preview
+    const gdMatch=vUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if(gdMatch&&vUrl.includes('drive.google')) vUrl='https://drive.google.com/file/d/'+gdMatch[1]+'/preview';
+    pvSlides.push({type:'vid',src:vUrl});
+  }
+  window._pvSlides=pvSlides;
+
+  if(pvSlides.length>0){
+    pvSlides.forEach((slide,i)=>{
+      if(slide.type==='img'){
+        const img=document.createElement('img');
+        img.className='pv-img'+(i===0?' active':'');
+        img.src=slide.src; img.alt='Image '+(i+1);
+        gallery.insertBefore(img,gallery.querySelector('.pv-img-counter'));
+      } else {
+        // Use iframe for YouTube/Drive, <video> for direct files
+        const isEmbed=slide.src.includes('youtube.com/embed')||slide.src.includes('drive.google.com');
+        if(isEmbed){
+          const ifr=document.createElement('iframe');
+          ifr.className='pv-video'+(i===0?' active':'');
+          ifr.src=slide.src;ifr.allowFullscreen=true;ifr.style.cssText='border:none;width:100%;height:100%;';
+          gallery.insertBefore(ifr,gallery.querySelector('.pv-img-counter'));
+        } else {
+          const vid=document.createElement('video');
+          vid.className='pv-video'+(i===0?' active':'');
+          vid.src=slide.src;vid.controls=true;vid.preload='metadata';
+          gallery.insertBefore(vid,gallery.querySelector('.pv-img-counter'));
+        }
+        if(i===0&&vidBadge) vidBadge.style.display='block';
+      }
+    });
+    document.getElementById("pv-arrows").style.display=pvSlides.length>1?'flex':'none';
+    pvImgs=pvSlides.map(s=>s.src);
+    updateCounter();
+  } else {
+    const ph=document.createElement('div');
+    ph.className='pv-empty-img';
+    ph.innerHTML='<div class="ei-ico">'+(p.category==='CAD'?'⚙️':'🔬')+'</div>'+
+      '<p>No media uploaded yet.<br>Log in as admin to add images or video.</p>';
+    gallery.insertBefore(ph,gallery.querySelector('.pv-img-counter'));
+    document.getElementById("pv-arrows").style.display='none';
+    document.getElementById("pv-counter").style.display='none';
+  }
+
+  // Thumbs
+  const thumbs=document.getElementById("pv-thumbs");
+  thumbs.innerHTML=pvSlides.map((slide,i)=>{
+    if(slide.type==='img')
+      return '<div class="pv-thumb'+(i===0?' active':'')+'" onclick="pvGoTo('+i+')" ><img src="'+slide.src+'" alt=""></div>';
+    return '<div class="pv-thumb pv-thumb-vid'+(i===0?' active':'')+'" onclick="pvGoTo('+i+')">▶</div>';
+  }).join('');
+
+  // (download file removed)
+
+  document.getElementById("pv-scroll").scrollTop=0;
+  document.getElementById("pv-overlay").classList.add("show");
+  document.body.style.overflow='hidden';
+}
+
+
+function setTxt(id,val){
+  const el=document.getElementById(id);
+  if(!val||!val.trim()){
+    el.innerHTML='<span class="pv-empty-txt">Not yet added — log in as admin to fill this in.</span>';
+    return;
+  }
+  const lines=val.split('\n').map(l=>l.replace(/^[\u2022\-\*]\s*/,'')).filter(l=>l.trim());
+  if(lines.length===1){
+    el.innerHTML=x(lines[0]);
+  } else {
+    el.innerHTML='<ul class="pv-bullet-list">'+lines.map(l=>'<li>'+x(l)+'</li>').join('')+'</ul>';
+  }
+}
+
+function closePV(){document.getElementById("pv-overlay").classList.remove("show");document.body.style.overflow='';document.querySelectorAll('.pv-video').forEach(v=>v.pause());}
+function pvBgClick(e){if(e.target===document.getElementById("pv-overlay"))closePV();}
+
+function pvSlide(dir){if(!pvImgs.length)return;pvGoTo((pvCur+dir+pvImgs.length)%pvImgs.length);}
+function pvGoTo(i){
+  pvCur=i;
+  const slides=window._pvSlides||[];
+  // update images
+  let ii=0,vi=0;
+  slides.forEach((s,si)=>{
+    if(s.type==='img'){
+      const el=document.querySelectorAll('.pv-img')[ii++];
+      if(el) el.classList.toggle('active',si===i);
+    } else {
+      const el=document.querySelectorAll('.pv-video')[vi++];
+      if(el){el.classList.toggle('active',si===i);if(si!==i&&el.pause)el.pause();}
+    }
+  });
+  // vid badge
+  const vb=document.getElementById('pv-vid-badge');
+  if(vb) vb.style.display=(slides[i]&&slides[i].type==='vid')?'block':'none';
+  // thumbs
+  document.querySelectorAll('.pv-thumb').forEach((el,j)=>el.classList.toggle('active',j===i));
+  updateCounter();
+}
+function updateCounter(){
+  const c=document.getElementById("pv-counter");
+  if(pvImgs.length>1){c.textContent=`${pvCur+1} / ${pvImgs.length}`;c.style.display='block';}
+  else c.style.display='none';
+}
+function openEditFromViewer(){closePV();setTimeout(()=>openEditProj(pvIdx),200);}
+
+/* ═══════════════════════════ PROJECT CRUD ═══════════════════════════ */
+function openAddProj(){
+  editIdx=-1;
+  document.getElementById("proj-modal-h").textContent="Add Project";
+  ['pi-title','pi-desc','pi-why','pi-approach','pi-work','pi-result','pi-tags']
+    .forEach(id=>document.getElementById(id).value='');
+  document.getElementById("pi-cat").value='CAD';
+  resetUploadState();
+  document.getElementById("p-del-btn").style.display='none';
+  openOverlay("proj-ov");
+}
+function openEditProj(i){
+  editIdx=i; const p=D.projects[i];
+  document.getElementById("proj-modal-h").textContent="Edit Project";
+  document.getElementById("pi-title").value=p.title||'';
+  document.getElementById("pi-cat").value=p.category||'CAD';
+  document.getElementById("pi-desc").value=p.desc||'';
+  document.getElementById("pi-why").value=p.why||'';
+  document.getElementById("pi-approach").value=p.approach||'';
+  document.getElementById("pi-work").value=p.work||'';
+  document.getElementById("pi-result").value=p.result||'';
+  document.getElementById("pi-tags").value=(p.tags||[]).join(', ');
+  resetUploadState();
+  prefillUploads(p);
+  document.getElementById("p-del-btn").style.display='inline-block';
+  openOverlay("proj-ov");
+}
+/* ════════════════════════════════════════════════════════════════
+   GITHUB STORAGE  ·  IDB = local cache only
+   Folder layout in your repo:
+     portfolio/data.json
+     portfolio/images/   ← project images
+     portfolio/pdfs/     ← project drawing PDFs
+     portfolio/resume/   ← your resume PDF
+════════════════════════════════════════════════════════════════ */
+
+/* ── GitHub config (kept in localStorage, never in D) ── */
+// GH is just a live reference to D.github — saved automatically with everything else
+const GH = { get token(){return ghGetToken();}, set token(v){ghGetToken()=v;},
+             get owner(){return D.github.owner;}, set owner(v){D.github.owner=v;},
+             get repo() {return D.github.repo;},  set repo(v) {D.github.repo=v;},
+             get branch(){return D.github.branch||'main';}, set branch(v){D.github.branch=v;} };
+function loadGHConfig(){} // no-op — GH reads from D which is already loaded
+function saveGHConfig(){  saveAll(); } // just use the normal save
+function ghGetToken(){ return localStorage.getItem('sk_gh_token')||''; }
+function ghSetToken(t){ if(t) localStorage.setItem('sk_gh_token',t); else localStorage.removeItem('sk_gh_token'); }
+function ghReady(){ return !!(ghGetToken() && D.github && D.github.owner && D.github.repo); }
+function ghBranch(){ return D.github.branch||'main'; }
+function ghHeaders(){ return {'Authorization':'token '+ghGetToken(),'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'}; }
+function ghApiUrl(path){ return `https://api.github.com/repos/${D.github.owner}/${D.github.repo}/contents/portfolio/${path}`; }
+function ghRawUrl(path){ return `https://raw.githubusercontent.com/${D.github.owner}/${D.github.repo}/${ghBranch()}/portfolio/${path}`; }
+
+/* ── Low-level GitHub API calls ── */
+async function ghGetFile(path){
+  const r = await fetch(ghApiUrl(path),{headers:ghHeaders()});
+  if(r.status===404) return null;
+  if(!r.ok) throw new Error(`GitHub ${r.status}: ${path}`);
+  return r.json();
+}
+// ghPutFile: always fetches fresh SHA right before writing to avoid 409 conflicts
+async function ghPutFile(path, b64content){
+  // Always get the latest SHA fresh — never rely on a cached one
+  const existing = await ghGetFile(path);
+  const body = {message:`portfolio: update ${path}`, content:b64content, branch:ghBranch()};
+  if(existing && existing.sha) body.sha = existing.sha;
+  const r = await fetch(ghApiUrl(path),{method:'PUT',headers:ghHeaders(),body:JSON.stringify(body)});
+  if(!r.ok){ const e=await r.json().catch(()=>({})); throw new Error(`GitHub PUT failed (${r.status}): ${e.message||path}`); }
+  return r.json();
+}
+async function ghDeleteFile(path){
+  const f = await ghGetFile(path);
+  if(!f) return;
+  const r = await fetch(ghApiUrl(path),{method:'DELETE',headers:ghHeaders(),body:JSON.stringify({message:`portfolio: delete ${path}`,sha:f.sha,branch:ghBranch()})});
+  if(!r.ok && r.status!==404) throw new Error(`GitHub DELETE failed (${r.status}): ${path}`);
+}
+
+/* ── IDB local cache ── */
+let _db=null;
+function getDB(){
+  if(_db) return Promise.resolve(_db);
+  return new Promise((res,rej)=>{
+    const req=indexedDB.open('sk_cache_v1',1);
+    req.onupgradeneeded=e=>{ if(!e.target.result.objectStoreNames.contains('c')) e.target.result.createObjectStore('c',{keyPath:'k'}); };
+    req.onsuccess=e=>{_db=e.target.result;res(_db);};
+    req.onerror=rej;
+  });
+}
+function cacheSet(k,v){ return getDB().then(db=>new Promise((r,j)=>{ const t=db.transaction('c','readwrite');t.objectStore('c').put({k,v});t.oncomplete=r;t.onerror=j; })); }
+function cacheGet(k){ return getDB().then(db=>new Promise((r,j)=>{ const t=db.transaction('c','readonly');const q=t.objectStore('c').get(k);q.onsuccess=e=>r(e.target.result?e.target.result.v:null);q.onerror=j; })); }
+function cacheDel(k){ return getDB().then(db=>new Promise((r,j)=>{ const t=db.transaction('c','readwrite');t.objectStore('c').delete(k);t.oncomplete=r;t.onerror=j; })).catch(()=>{}); }
+
+/* ── Helpers ── */
+function readFileAsDataURL(file){ return new Promise(r=>{const fr=new FileReader();fr.onload=e=>r(e.target.result);fr.readAsDataURL(file);}); }
+function dataUrlToBase64(d){ return d.split(',')[1]; }
+function mediaKey(folder, filename){
+  const ext = filename ? filename.split('.').pop().toLowerCase() : 'bin';
+  const slug = (filename||'file').replace(/[^a-zA-Z0-9._-]/g,'_').replace(/\.[^.]+$/,'');
+  return `${folder}/${slug}_${Date.now()}.${ext}`;
+}
+
+/* ── Upload file to GitHub, cache raw URL locally ── */
+async function mediaSave(path, dataUrl){
+  if(!ghReady()) throw new Error('GitHub not configured. Open Settings first.');
+  const b64 = dataUrlToBase64(dataUrl);
+  await ghPutFile(path, b64); // ghPutFile handles SHA internally
+  await cacheSet(path, ghRawUrl(path));
+}
+
+/* ── Get URL for a stored file ── */
+async function mediaLoad(path){
+  if(!path) return null;
+  // If GitHub configured: return raw URL directly (public repo = works immediately)
+  if(ghReady()) return ghRawUrl(path);
+  // Fallback: check local cache (may have dataUrl from old IDB or previous load)
+  const cached = await cacheGet(path).catch(()=>null);
+  return cached||null;
+}
+
+/* ── Delete from GitHub ── */
+async function mediaDel(path){
+  cacheDel(path);
+  if(!path||!ghReady()) return;
+  ghDeleteFile(path).catch(e=>console.warn('mediaDel:',e));
+}
+
+/* ── Save data.json to GitHub + localStorage ── */
+async function saveAll(){
+  localStorage.setItem('sk_port_v7', JSON.stringify(D));
+  if(!ghReady()){ toast('Saved locally. Connect GitHub in Settings to sync.'); return; }
+  ghSetStatus('Saving...','var(--muted)');
+  try{
+    // Token is NOT in D — safe to push D directly
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(D,null,2))));
+    await ghPutFile('data.json', content); // ghPutFile fetches SHA internally
+    toast('Saved to GitHub ✓');
+    ghSetStatus('Synced','var(--cyan)');
+  }catch(e){
+    toast('Saved locally. GitHub sync failed: '+e.message);
+    ghSetStatus('Sync failed','#ef4444');
+    console.error('saveAll GitHub:', e);
+  }
+}
+
+/* ── Load data.json from GitHub on startup ── */
+async function loadFromGitHub(){
+  if(!ghReady()) return;
+  try{
+    const r = await fetch(ghRawUrl('data.json')+'?t='+Date.now());
+    if(!r.ok) return;
+    const remote = await r.json();
+    delete remote.adminPassword; // never overwrite password from remote
+    Object.assign(D, remote);
+    localStorage.setItem('sk_port_v7', JSON.stringify(D));
+    renderAll();
+    setTimeout(()=>{initReveal();loadCardThumbs();},60);
+    toast('Loaded from GitHub ✓');
+  }catch(e){ console.warn('loadFromGitHub:', e); }
+}
+
+/* ── GitHub test + sync buttons ── */
+function ghSetStatus(msg, color){
+  const el=document.getElementById('gh-status');
+  if(el){el.textContent=msg;el.style.color=color||'var(--muted)';}
+}
+function _saveGHFromInputs(){
+  if(!D.github) D.github={owner:'',repo:'',branch:'main'};
+  // Token: localStorage only — never stored in D
+  const t=(document.getElementById('gh-token')||{}).value;
+  if(t!==undefined && t.trim()) ghSetToken(t.trim());
+  // Rest: safe to store in D (owner/repo/branch are not secrets)
+  const o=(document.getElementById('gh-owner')||{}).value;
+  const r=(document.getElementById('gh-repo')||{}).value;
+  const b=(document.getElementById('gh-branch')||{}).value;
+  if(o!==undefined) D.github.owner  = o.trim();
+  if(r!==undefined) D.github.repo   = r.trim();
+  if(b!==undefined) D.github.branch = b.trim()||'main';
+}
+async function testGitHubConnection(){
+  _saveGHFromInputs();
+  if(!ghReady()){ ghSetStatus('Fill in token, username and repo first.','#ef4444'); return; }
+  ghSetStatus('Testing...','var(--muted)');
+  try{
+    const r = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}`,{headers:ghHeaders()});
+    if(r.status===200){
+      const data = await r.json();
+      if(data.private) ghSetStatus('Connected ✓ (private repo — use resume URL link for public access)','var(--cyan)');
+      else ghSetStatus('Connected ✓  Public repo — all good!','var(--cyan)');
+    } else if(r.status===404) ghSetStatus('Repo not found. Check owner/repo name.','#ef4444');
+    else if(r.status===401) ghSetStatus('Invalid token. Check your PAT.','#ef4444');
+    else ghSetStatus('Error '+r.status,'#ef4444');
+  }catch(e){ ghSetStatus('Network error: '+e.message,'#ef4444'); }
+}
+async function syncFromGitHub(){
+  _saveGHFromInputs();
+  if(!ghReady()){ ghSetStatus('Configure GitHub first.','#ef4444'); return; }
+  ghSetStatus('Pulling...','var(--muted)');
+  await loadFromGitHub();
+  ghSetStatus('Pulled ✓','var(--cyan)');
+}
+
+/* ════ Upload state for current project edit session ════ */
+let _pendingImgs = []; // [{path, dataUrl, name, isNew}]
+let _pendingPdf  = null; // {path, dataUrl, name, isNew} | null
+
+function renderImgPreviews(){
+  document.getElementById('img-preview-grid').innerHTML =
+    _pendingImgs.map((im,i)=>`<div class="img-preview-item">
+      <img src="${im.dataUrl}" alt="">
+      <button class="img-preview-del" onclick="removeImg(${i})">✕</button>
+    </div>`).join('');
+}
+function removeImg(i){ _pendingImgs.splice(i,1); renderImgPreviews(); }
+
+function updateFileZone(zoneId,txtId,name,icon){
+  document.getElementById(zoneId).classList.add('has-file');
+  document.getElementById(txtId).innerHTML=`${icon} <strong>${x(name)}</strong> — ready ✓`;
+}
+
+function resetUploadState(){
+  _pendingImgs=[]; _pendingPdf=null;
+  renderImgPreviews();
+  const pz=document.getElementById('pdf-upload-zone');if(pz)pz.classList.remove('has-file');
+  const pt=document.getElementById('pdf-uz-txt');if(pt)pt.innerHTML='Click to upload PDF drawing or report';
+  const vi=document.getElementById('pi-vid-url');if(vi)vi.value='';
+}
+
+async function prefillUploads(p){
+  _pendingImgs=[];
+  for(const path of (p.imageKeys||[])){
+    const url = await mediaLoad(path);
+    if(url) _pendingImgs.push({path, dataUrl:url, name:path.split('/').pop(), isNew:false});
+  }
+  renderImgPreviews();
+  _pendingPdf=null;
+  if(p.pdfKey){
+    const url = await mediaLoad(p.pdfKey);
+    if(url){
+      _pendingPdf={path:p.pdfKey, dataUrl:url, name:p.pdfName||'drawing.pdf', isNew:false};
+      updateFileZone('pdf-upload-zone','pdf-uz-txt',p.pdfName||'drawing.pdf','📄');
+    }
+  }
+  const vi=document.getElementById('pi-vid-url');
+  if(vi) vi.value=p.vidUrl||'';
+}
+
+/* ════ Upload zone wiring ════ */
+function setupImgUpload(){
+  const zone=document.getElementById('img-upload-zone');
+  const inp=document.getElementById('img-file-input');
+  let _c=false;
+  zone.addEventListener('click',()=>{ if(_c)return;_c=true;inp.click();setTimeout(()=>_c=false,500); });
+  inp.addEventListener('change',async()=>{
+    for(const file of Array.from(inp.files)){
+      const dataUrl=await readFileAsDataURL(file);
+      const path=mediaKey('images',file.name);
+      _pendingImgs.push({path,dataUrl,name:file.name,isNew:true});
+    }
+    inp.value=''; renderImgPreviews();
+  });
+  zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('drag');});
+  zone.addEventListener('dragleave',()=>zone.classList.remove('drag'));
+  zone.addEventListener('drop',async e=>{
+    e.preventDefault();zone.classList.remove('drag');
+    for(const file of Array.from(e.dataTransfer.files)){
+      if(!file.type.startsWith('image/'))continue;
+      const dataUrl=await readFileAsDataURL(file);
+      const path=mediaKey('images',file.name);
+      _pendingImgs.push({path,dataUrl,name:file.name,isNew:true});
+    }
+    renderImgPreviews();
+  });
+}
+
+function setupPdfUpload(){
+  const zone=document.getElementById('pdf-upload-zone');
+  const inp=document.getElementById('pdf-file-input');
+  let _c=false;
+  zone.addEventListener('click',()=>{ if(_c)return;_c=true;inp.click();setTimeout(()=>_c=false,500); });
+  const handle=async(file)=>{
+    if(!file) return;
+    const dataUrl=await readFileAsDataURL(file);
+    const path=mediaKey('pdfs',file.name);
+    _pendingPdf={path,dataUrl,name:file.name,isNew:true};
+    updateFileZone('pdf-upload-zone','pdf-uz-txt',file.name,'📄');
+  };
+  inp.addEventListener('change',async()=>{ await handle(inp.files[0]); inp.value=''; });
+  zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('drag');});
+  zone.addEventListener('dragleave',()=>zone.classList.remove('drag'));
+  zone.addEventListener('drop',async e=>{e.preventDefault();zone.classList.remove('drag');await handle(e.dataTransfer.files[0]);});
+}
+
+/* ════ Save project ════ */
+async function saveProj(){
+  if(!ghReady()){
+    toast('⚠️ Connect GitHub in Settings first — files need somewhere to be stored.');
+    return;
+  }
+  const t=document.getElementById('pi-title').value.trim();
+  if(!t){toast('Title is required.');return;}
+  toast('Uploading files...');
+  try{
+    // Upload new images
+    for(const im of _pendingImgs){
+      if(im.isNew) await mediaSave(im.path, im.dataUrl);
+    }
+    // Upload new PDF
+    let pdfKey=null,pdfName=null;
+    if(_pendingPdf){
+      if(_pendingPdf.isNew) await mediaSave(_pendingPdf.path, _pendingPdf.dataUrl);
+      pdfKey=_pendingPdf.path; pdfName=_pendingPdf.name;
+    }
+    const p={
+      title:t,
+      category:document.getElementById('pi-cat').value,
+      desc:document.getElementById('pi-desc').value.trim(),
+      why:document.getElementById('pi-why').value.trim(),
+      approach:document.getElementById('pi-approach').value.trim(),
+      work:document.getElementById('pi-work').value.trim(),
+      result:document.getElementById('pi-result').value.trim(),
+      tags:document.getElementById('pi-tags').value.split(',').map(s=>s.trim()).filter(Boolean),
+      imageKeys:_pendingImgs.map(im=>im.path),
+      pdfKey, pdfName,
+      vidUrl:(document.getElementById('pi-vid-url')||{}).value?.trim()||''
+    };
+    if(editIdx===-1)D.projects.push(p);else D.projects[editIdx]=p;
+    closeOverlay('proj-ov');
+    await saveAll();
+    renderProjects(); setTimeout(()=>{initReveal();loadCardThumbs();},60);
+  }catch(e){
+    toast('Error: '+e.message);
+    console.error('saveProj:',e);
+  }
+}
+
+function deleteProj(){
+  if(editIdx<0)return;if(!confirm('Delete this project?'))return;
+  const p=D.projects[editIdx];
+  (p.imageKeys||[]).forEach(k=>mediaDel(k));
+  if(p.pdfKey) mediaDel(p.pdfKey);
+  D.projects.splice(editIdx,1);
+  closeOverlay('proj-ov');
+  renderProjects();setTimeout(()=>{initReveal();loadCardThumbs();},60);
+  saveAll();
+}
+
+
+
+/* ═══════════════════════════ SETTINGS ═══════════════════════════ */
+function openSettings(){
+  // GitHub config fields — read directly from D.github
+  document.getElementById("gh-token").value=ghGetToken();
+  document.getElementById("gh-owner").value=D.github.owner||'';
+  document.getElementById("gh-repo").value=D.github.repo||'';
+  document.getElementById("gh-branch").value=D.github.branch||'main';
+  ghSetStatus(ghReady()?'Connected ✓':'Not configured yet', ghReady()?'var(--cyan)':'var(--muted)');
+  // resume upload zone state
+  _updateResumeZoneUI();
+  // resume url fallback
+  document.getElementById("si-resume-url").value=D.resumeUrl||'';
+  document.getElementById("si-email").value=D.contact.email||'';
+  document.getElementById("si-phone").value=D.contact.phone||'';
+  document.getElementById("si-linkedin").value=D.contact.linkedin||'';
+  document.getElementById("si-location").value=D.contact.location||'';
+  document.getElementById("si-pwd").value='';
+  openOverlay("set-ov");
+}
+function saveSettings(){
+  // save GitHub config first
+  _saveGHFromInputs();
+  // save resume URL fallback
+  D.resumeUrl=document.getElementById("si-resume-url").value.trim();
+  D.contact.email=document.getElementById("si-email").value.trim();
+  D.contact.phone=document.getElementById("si-phone").value.trim();
+  D.contact.linkedin=document.getElementById("si-linkedin").value.trim();
+  D.contact.location=document.getElementById("si-location").value.trim();
+  const np=document.getElementById("si-pwd").value.trim();if(np)D.adminPassword=np;
+  closeOverlay("set-ov");renderContact();saveAll();toast("⚙️ Settings saved!");
+}
+
+/* ═══════════════════════════ ADMIN ═══════════════════════════ */
+let clicks=0,clickT;
+document.getElementById("logo").addEventListener("click",()=>{
+  clicks++;clearTimeout(clickT);clickT=setTimeout(()=>clicks=0,1800);
+  if(clicks>=5){clicks=0;if(!isAdmin)openOverlay("pwd-ov");}
+});
+function checkPwd(){
+  if(document.getElementById("pwd-inp").value===D.adminPassword){
+    closeOverlay("pwd-ov");isAdmin=true;
+    document.getElementById("admin-bar").classList.add("show");
+    toast("🔧 Admin mode active");
+  }else{document.getElementById("pwd-err").style.display="block";document.getElementById("pwd-inp").value="";}
+}
+function toggleEdit(){
+  editMode=!editMode;
+  document.body.classList.toggle("admin-mode",editMode);
+  document.getElementById("edit-tog").textContent=`Edit: ${editMode?"ON ✓":"OFF"}`;
+  document.getElementById("edit-tog").classList.toggle("active",editMode);
+  renderProjects();setTimeout(initReveal,60);
+}
+function logoutAdmin(){
+  isAdmin=false;editMode=false;
+  document.getElementById("admin-bar").classList.remove("show");
+  document.body.classList.remove("admin-mode");
+  document.getElementById("edit-tog").textContent="Edit: OFF";
+  document.getElementById("edit-tog").classList.remove("active");
+  renderProjects();toast("Exited admin mode.");
+}
+
+/* ═══════════════════════════ MODAL HELPERS ═══════════════════════════ */
+function openOverlay(id){
+  document.getElementById(id).classList.add("show");
+  if(id==="pwd-ov"){document.getElementById("pwd-inp").value="";document.getElementById("pwd-err").style.display="none";setTimeout(()=>document.getElementById("pwd-inp").focus(),120);}
+}
+function closeOverlay(id){document.getElementById(id).classList.remove("show");}
+document.querySelectorAll(".overlay").forEach(ov=>ov.addEventListener("click",e=>{if(e.target===ov)closeOverlay(ov.id);}));
+
+/* ═══════════════════════════ SCROLL REVEAL ═══════════════════════════ */
+let revObs;
+function initReveal(){
+  if(revObs)revObs.disconnect();
+  revObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("vis");revObs.unobserve(e.target);}});
+  },{threshold:.08,rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".reveal:not(.vis)").forEach(el=>revObs.observe(el));
+}
+
+/* ═══════════════════════════ UTILS ═══════════════════════════ */
+function x(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function toast(msg){const ex=document.querySelector(".toast");if(ex)ex.remove();const t=Object.assign(document.createElement("div"),{className:"toast",textContent:msg});document.body.appendChild(t);setTimeout(()=>{t.style.opacity="0";setTimeout(()=>t.remove(),400);},2600);}
+
+window.addEventListener("scroll",()=>{
+  const hero=document.getElementById("hero");
+  const threshold=hero?hero.offsetHeight*0.55:400;
+  document.getElementById("nav").classList.toggle("nav-visible",window.scrollY>threshold);
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&document.getElementById("pdf-viewer-overlay").classList.contains("show")){closePdfViewer();return;}
+  if(e.key==="Escape"){
+    if(document.getElementById("pv-overlay").classList.contains("show"))closePV();
+    document.querySelectorAll(".overlay.show").forEach(o=>closeOverlay(o.id));
+  }
+  if(document.getElementById("pv-overlay").classList.contains("show")){
+    if(e.key==="ArrowLeft")pvSlide(-1);
+    if(e.key==="ArrowRight")pvSlide(1);
+  }
+});
+
+
+/* ════════════════════════════════════════
+   PDF VIEWER
+════════════════════════════════════════ */
+let _currentPdfData = null; // base64 data URL of currently open PDF
+let _currentPdfName = 'document.pdf';
+
+function openPdfViewer(dataOrUrl, title) {
+  if (!dataOrUrl) { toast("No PDF available yet."); return; }
+  openUrlInViewer(dataOrUrl, title);
+}
+
+function closePdfViewer() {
+  document.getElementById("pdf-viewer-overlay").classList.remove("show");
+  document.body.style.overflow = "";
+  // clear iframe to stop any background loading
+  document.getElementById("pdf-iframe").src = "";
+}
+
+/* ════════════════════════════════════════
+   RESUME VIEWER — handles upload + URL fallback
+════════════════════════════════════════ */
+async function openResumeViewer() {
+  // Priority 1: uploaded PDF via GitHub
+  if (D.resumeKey) {
+    const url = await mediaLoad(D.resumeKey);
+    if (url) { openUrlInViewer(url, D.resumeName || "Resume.pdf"); return; }
+  }
+  // Priority 2: Google Drive / URL fallback
+  if (D.resumeUrl && D.resumeUrl.trim()) {
+    // Convert Google Drive share link to embedded viewer link
+    let url = D.resumeUrl.trim();
+    const gDriveMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if (gDriveMatch) {
+      url = "https://drive.google.com/file/d/" + gDriveMatch[1] + "/preview";
+    }
+    openUrlInViewer(url, "Resume.pdf");
+    return;
+  }
+  // Nothing set
+  if (isAdmin) {
+    toast("No resume yet — upload a PDF or paste a link in Settings.");
+    openSettings();
+  } else {
+    toast("Resume not available yet.");
+  }
+}
+
+// Open any URL (Drive preview, etc.) in the PDF viewer iframe
+function openUrlInViewer(url, title) {
+  document.getElementById("pdf-viewer-title").textContent = title || "Document";
+  document.getElementById("pdf-dl-btn").href = url;
+  document.getElementById("pdf-dl-btn").download = "";
+  document.getElementById("pdf-loading").classList.remove("hidden");
+  document.getElementById("pdf-iframe").src = url;
+  document.getElementById("pdf-viewer-overlay").classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+// Called from project viewer PDF button
+let _pvPdfData = null;
+let _pvPdfName = "drawing.pdf";
+function openPdfFromProject() {
+  if (_pvPdfData) openUrlInViewer(_pvPdfData, _pvPdfName);
+  else toast("No PDF uploaded for this project.");
+}
+
+// Update resume zone UI to reflect current state
+function _updateResumeZoneUI() {
+  const zone = document.getElementById("resume-upload-zone");
+  const txt  = document.getElementById("resume-uz-txt");
+  const acts = document.getElementById("resume-uploaded-actions");
+  if (!zone) return;
+  if (D.resumeKey && D.resumeName) {
+    zone.classList.add("has-file");
+    if (txt) txt.innerHTML = "&#128196; <strong>" + esc(D.resumeName) + "</strong> &mdash; uploaded &#10003;";
+    if (acts) acts.style.display = "block";
+  } else {
+    zone.classList.remove("has-file");
+    if (txt) txt.innerHTML = "Click or drag to upload your Resume PDF";
+    if (acts) acts.style.display = "none";
+  }
+}
+
+function clearResumePdf() {
+  if (D.resumeKey) mediaDel(D.resumeKey);
+  D.resumeKey = null; D.resumeName = null;
+  saveAll(); _updateResumeZoneUI();
+  toast("Resume PDF removed.");
+}
+
+/* ════════════════════════════════════════
+   RESUME UPLOAD SETUP
+════════════════════════════════════════ */
+function setupResumeUpload() {
+  const zone = document.getElementById("resume-upload-zone");
+  const inp  = document.getElementById("resume-file-input");
+  if (!zone || !inp) return;
+
+  const handleFile = async (file) => {
+    if (!file || file.type !== "application/pdf") {
+      toast("Please select a PDF file."); return;
+    }
+    toast("Uploading resume...");
+    try {
+      const dataUrl = await readFileAsDataURL(file);
+      const key = mediaKey("resume", file.name);
+      await mediaSave(key, dataUrl);
+      if (D.resumeKey && D.resumeKey !== key) mediaDel(D.resumeKey); // remove old file
+      D.resumeKey  = key;
+      D.resumeName = file.name;
+      saveAll();
+      _updateResumeZoneUI();
+      toast("&#10003; Resume uploaded — " + file.name);
+    } catch(e) {
+      console.error("Resume upload failed:", e);
+      toast("Upload failed: " + (e.message||"unknown error"));
+    }
+  };
+
+  // Use a flag to prevent double-trigger
+  let _clicking = false;
+  zone.addEventListener("click", e => {
+    if (_clicking) return;
+    _clicking = true;
+    inp.click();
+    setTimeout(() => _clicking = false, 500);
+  });
+  inp.addEventListener("change", async () => {
+    if (inp.files && inp.files[0]) await handleFile(inp.files[0]);
+    inp.value = "";
+  });
+  zone.addEventListener("dragover",  e => { e.preventDefault(); zone.classList.add("drag"); });
+  zone.addEventListener("dragleave", () => zone.classList.remove("drag"));
+  zone.addEventListener("drop", async e => {
+    e.preventDefault(); zone.classList.remove("drag");
+    const f = e.dataTransfer.files[0];
+    if (f) await handleFile(f);
+  });
+}
+
+
+/* ════════════════════════════════════════════
+   RENDER HERO
+════════════════════════════════════════════ */
+function renderHero(){
+  const hr=D.hero;
+  const nameParts=hr.name.split('|');
+  const nameHtml=nameParts.join('<br>');
+  const tagHtml=hr.tagline.map((t,i)=>(i>0?'&nbsp;&middot;&nbsp;':'')+'<span class="hl">'+x(t)+'</span>').join(' ');
+  const statsHtml=hr.stats.map(s=>'<div class="hstat"><div class="hstat-num">'+x(s.num)+'</div><div class="hstat-lbl">'+x(s.lbl)+'</div></div>').join('');
+  const editBtn=`<button class="section-edit-btn admin-only" onclick="openHeroEditor()">✏️ Edit Hero</button>`;
+  document.getElementById("hero-content").innerHTML=`
+    <div class="hero-eyebrow">${x(hr.eyebrow)}</div>
+    <h1 class="hero-name">${nameHtml}</h1>
+    <p class="hero-tagline">${tagHtml}</p>
+    <p class="hero-sub">${x(hr.sub)}</p>
+    <div class="hero-ctas">
+      <a class="btn-p" href="#projects">Explore Projects</a>
+      <button class="btn-s" onclick="openResumeViewer()">View Resume &#8599;</button>
+    </div>
+    <div class="hero-stats">${statsHtml}</div>
+    ${editBtn}`;
+}
+
+/* ════════════════════════════════════════════
+   RENDER ABOUT
+════════════════════════════════════════════ */
+function renderAbout(){
+  const ab=D.about;
+  const paras=ab.bio.split('\n\n').filter(p=>p.trim());
+  const parasHtml=paras.map(p=>'<p>'+x(p.trim())+'</p>').join('');
+  const hlHtml=ab.highlights.map((hl,i)=>{
+    const parts=hl.lbl.split('\n');
+    const lbl=parts[0]||'';
+    const sub=parts[1]||'';
+    const editBtn=`<button class="card-edit-btn admin-only" onclick="event.stopPropagation();openHighlightEditor(${i})" title="Edit">✏️</button>`;
+    return `<div class="hl-card" style="position:relative;">${editBtn}<div class="hl-num">${x(hl.num)}</div><div class="hl-lbl">${x(lbl)}<br>${x(sub)}</div></div>`;
+  }).join('');
+  const addHlBtn=`<button class="hl-card hl-add-btn admin-only" onclick="openHighlightEditor(-1)" style="display:none;cursor:pointer;align-items:center;justify-content:center;font-size:1.5rem;color:var(--cyan);">＋</button>`;
+  document.getElementById("about-wrap").innerHTML=`
+    <div class="sec-lbl reveal">About Me</div>
+    <div class="about-grid">
+      <div>
+        <div style="display:flex;align-items:baseline;gap:.75rem;">
+          <h2 class="sec-title reveal">${x(ab.heading).replace('\\n','<br>')}</h2>
+          <button class="section-edit-btn admin-only" onclick="openAboutEditor()">✏️ Edit</button>
+        </div>
+        <div class="about-bio reveal">${parasHtml}</div>
+      </div>
+      <div class="about-highlights reveal">${hlHtml}${addHlBtn}</div>
+    </div>`;
+  initReveal();
+}
+
+/* ════════════════════════════════════════════
+   SECTION EDIT BUTTONS CSS (injected once)
+════════════════════════════════════════════ */
+(function injectEditCSS(){
+  if(document.getElementById('edit-btn-css')) return;
+  const s=document.createElement('style');
+  s.id='edit-btn-css';
+  s.textContent=`
+    .section-edit-btn,.card-edit-btn{display:none;}
+    .admin-mode .section-edit-btn,.admin-mode .card-edit-btn{display:inline-flex;align-items:center;gap:.3rem;}
+    .admin-mode .hl-add-btn{display:flex!important;}
+    .section-edit-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:.22rem .6rem;border-radius:5px;font-size:.72rem;cursor:pointer;transition:all .2s;vertical-align:middle;}
+    .section-edit-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+    .card-edit-btn{position:absolute;top:.5rem;right:.5rem;background:rgba(7,11,22,.85);border:1px solid var(--border);color:var(--muted);padding:.2rem .5rem;border-radius:4px;font-size:.68rem;cursor:pointer;transition:all .2s;z-index:5;}
+    .card-edit-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+    .tl-edit-btn{display:none;background:rgba(7,11,22,.85);border:1px solid var(--border);color:var(--muted);padding:.22rem .55rem;border-radius:5px;font-size:.72rem;cursor:pointer;transition:all .2s;}
+    .admin-mode .tl-edit-btn{display:inline-block;}
+    .tl-edit-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+    .section-add-row{display:none;margin-top:1rem;}
+    .admin-mode .section-add-row{display:flex;gap:.6rem;}
+    .add-section-btn{background:transparent;border:1px dashed rgba(34,211,238,.4);color:var(--cyan);border-radius:8px;padding:.6rem 1.25rem;font-family:var(--fb);font-size:.82rem;cursor:pointer;transition:background .2s;}
+    .add-section-btn:hover{background:var(--cyan-10);}
+  `;
+  document.head.appendChild(s);
+})();
+
+/* ════════════════════════════════════════════
+   HERO EDITOR
+════════════════════════════════════════════ */
+function openHeroEditor(){
+  const hr=D.hero;
+  document.getElementById("he-eyebrow").value=hr.eyebrow||'';
+  document.getElementById("he-name").value=hr.name||'';
+  document.getElementById("he-tagline").value=(hr.tagline||[]).join(', ');
+  document.getElementById("he-sub").value=hr.sub||'';
+  document.getElementById("he-stats").value=(hr.stats||[]).map(s=>s.num+'|'+s.lbl).join('\n');
+  openOverlay('hero-ov');
+}
+function saveHero(){
+  D.hero.eyebrow=document.getElementById("he-eyebrow").value.trim();
+  D.hero.name=document.getElementById("he-name").value.trim();
+  D.hero.tagline=document.getElementById("he-tagline").value.split(',').map(s=>s.trim()).filter(Boolean);
+  D.hero.sub=document.getElementById("he-sub").value.trim();
+  D.hero.stats=document.getElementById("he-stats").value.split('\n').map(l=>{
+    const p=l.split('|');return{num:(p[0]||'').trim(),lbl:(p[1]||'').trim()};
+  }).filter(s=>s.num);
+  closeOverlay('hero-ov');renderHero();saveAll();
+}
+
+/* ════════════════════════════════════════════
+   ABOUT EDITOR
+════════════════════════════════════════════ */
+function openAboutEditor(){
+  document.getElementById("ab-heading").value=D.about.heading||'';
+  document.getElementById("ab-bio").value=D.about.bio||'';
+  document.getElementById("ab-highlights").value=(D.about.highlights||[]).map(h=>h.num+'|'+h.lbl.replace('\n',' - ')).join('\n');
+  openOverlay('about-ov');
+}
+function saveAbout(){
+  D.about.heading=document.getElementById("ab-heading").value.trim();
+  D.about.bio=document.getElementById("ab-bio").value.trim();
+  const lines=document.getElementById("ab-highlights").value.split('\n').filter(l=>l.trim());
+  D.about.highlights=lines.map(l=>{
+    const i=l.indexOf('|');
+    if(i<0)return{num:l.trim(),lbl:''};
+    return{num:l.slice(0,i).trim(),lbl:l.slice(i+1).trim()};
+  });
+  closeOverlay('about-ov');renderAbout();saveAll();
+}
+let _hlIdx=-1;
+function openHighlightEditor(i){
+  _hlIdx=i;
+  if(i===-1){
+    document.getElementById("ab-heading").value=D.about.heading||'';
+    document.getElementById("ab-bio").value=D.about.bio||'';
+    document.getElementById("ab-highlights").value=(D.about.highlights||[]).map(h=>h.num+'|'+h.lbl.replace('\n',' - ')).join('\n');
+  } else {
+    document.getElementById("ab-heading").value=D.about.heading||'';
+    document.getElementById("ab-bio").value=D.about.bio||'';
+    document.getElementById("ab-highlights").value=(D.about.highlights||[]).map(h=>h.num+'|'+h.lbl.replace('\n',' - ')).join('\n');
+  }
+  openOverlay('about-ov');
+}
+
+/* ════════════════════════════════════════════
+   EXPERIENCE EDITOR
+════════════════════════════════════════════ */
+let _expIdx=-1;
+function openExpEditor(i){
+  _expIdx=i;
+  if(i===-1){
+    document.getElementById("exp-modal-h").textContent='✏️ Add Experience';
+    ['exp-role','exp-company','exp-date','exp-bullets','exp-badge'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById("exp-color").value='cyan';
+    document.getElementById("exp-del-btn").style.display='none';
+  } else {
+    const e=D.experience[i];
+    document.getElementById("exp-modal-h").textContent='✏️ Edit Experience';
+    document.getElementById("exp-role").value=e.role||'';
+    document.getElementById("exp-company").value=e.company||'';
+    document.getElementById("exp-date").value=e.date||'';
+    document.getElementById("exp-color").value=e.color||'cyan';
+    document.getElementById("exp-bullets").value=(e.bullets||[]).join('\n');
+    document.getElementById("exp-badge").value=e.badge||'';
+    document.getElementById("exp-del-btn").style.display='inline-block';
+  }
+  openOverlay('exp-ov');
+}
+function saveExp(){
+  const e={
+    role:document.getElementById("exp-role").value.trim(),
+    company:document.getElementById("exp-company").value.trim(),
+    date:document.getElementById("exp-date").value.trim(),
+    color:document.getElementById("exp-color").value,
+    bullets:document.getElementById("exp-bullets").value.split('\n').map(s=>s.trim()).filter(Boolean),
+    badge:document.getElementById("exp-badge").value.trim()
+  };
+  if(!e.role){toast('Role is required.');return;}
+  if(_expIdx===-1)D.experience.push(e);else D.experience[_expIdx]=e;
+  closeOverlay('exp-ov');renderTimeline();setTimeout(initReveal,60);saveAll();
+}
+function deleteExp(){
+  if(_expIdx<0)return;if(!confirm('Delete this experience?'))return;
+  D.experience.splice(_expIdx,1);
+  closeOverlay('exp-ov');renderTimeline();setTimeout(initReveal,60);saveAll();
+}
+
+/* ════════════════════════════════════════════
+   SKILLS EDITOR
+════════════════════════════════════════════ */
+let _skIdx=-1;
+function openSkillEditor(i){
+  _skIdx=i;
+  if(i===-1){
+    document.getElementById("skills-modal-h").textContent='✏️ Add Skill Category';
+    document.getElementById("sk-cat").value='';
+    document.getElementById("sk-items").value='';
+    document.getElementById("sk-del-btn").style.display='none';
+  } else {
+    const s=D.skills[i];
+    document.getElementById("skills-modal-h").textContent='✏️ Edit Skill Category';
+    document.getElementById("sk-cat").value=s.cat||'';
+    document.getElementById("sk-items").value=(s.items||[]).join(', ');
+    document.getElementById("sk-del-btn").style.display='inline-block';
+  }
+  openOverlay('skills-ov');
+}
+function saveSkill(){
+  const s={
+    cat:document.getElementById("sk-cat").value.trim(),
+    items:document.getElementById("sk-items").value.split(',').map(s=>s.trim()).filter(Boolean)
+  };
+  if(!s.cat){toast('Category name required.');return;}
+  if(_skIdx===-1)D.skills.push(s);else D.skills[_skIdx]=s;
+  closeOverlay('skills-ov');renderSkills();setTimeout(initReveal,60);saveAll();
+}
+function deleteSkill(){
+  if(_skIdx<0)return;if(!confirm('Delete this skill category?'))return;
+  D.skills.splice(_skIdx,1);
+  closeOverlay('skills-ov');renderSkills();setTimeout(initReveal,60);saveAll();
+}
+
+/* ════════════════════════════════════════════
+   ACHIEVEMENTS EDITOR
+════════════════════════════════════════════ */
+let _achIdx=-1;
+function openAchEditor(i){
+  _achIdx=i;
+  if(i===-1){
+    document.getElementById("ach-modal-h").textContent='✏️ Add Achievement';
+    ['ach-icon','ach-title','ach-desc'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById("ach-del-btn").style.display='none';
+  } else {
+    const a=D.achievements[i];
+    document.getElementById("ach-modal-h").textContent='✏️ Edit Achievement';
+    document.getElementById("ach-icon").value=a.icon||'';
+    document.getElementById("ach-title").value=a.title||'';
+    document.getElementById("ach-desc").value=a.desc||'';
+    document.getElementById("ach-del-btn").style.display='inline-block';
+  }
+  openOverlay('ach-ov');
+}
+function saveAch(){
+  const a={
+    icon:document.getElementById("ach-icon").value.trim(),
+    title:document.getElementById("ach-title").value.trim(),
+    desc:document.getElementById("ach-desc").value.trim()
+  };
+  if(!a.title){toast('Title required.');return;}
+  if(_achIdx===-1)D.achievements.push(a);else D.achievements[_achIdx]=a;
+  closeOverlay('ach-ov');renderAchievements();setTimeout(initReveal,60);saveAll();
+}
+function deleteAch(){
+  if(_achIdx<0)return;if(!confirm('Delete this achievement?'))return;
+  D.achievements.splice(_achIdx,1);
+  closeOverlay('ach-ov');renderAchievements();setTimeout(initReveal,60);saveAll();
+}
+
+/* ════════════════════════════════════════════
+   CERTIFICATIONS EDITOR
+════════════════════════════════════════════ */
+let _certIdx=-1;
+function openCertEditor(i){
+  _certIdx=i;
+  if(i===-1){
+    document.getElementById("cert-modal-h").textContent='✏️ Add Certification';
+    document.getElementById("cert-name").value='';
+    document.getElementById("cert-del-btn").style.display='none';
+  } else {
+    document.getElementById("cert-modal-h").textContent='✏️ Edit Certification';
+    document.getElementById("cert-name").value=D.certifications[i]||'';
+    document.getElementById("cert-del-btn").style.display='inline-block';
+  }
+  openOverlay('cert-ov');
+}
+function saveCert(){
+  const v=document.getElementById("cert-name").value.trim();
+  if(!v){toast('Certification name required.');return;}
+  if(_certIdx===-1)D.certifications.push(v);else D.certifications[_certIdx]=v;
+  closeOverlay('cert-ov');renderCerts();setTimeout(initReveal,60);saveAll();
+}
+function deleteCert(){
+  if(_certIdx<0)return;if(!confirm('Delete this certification?'))return;
+  D.certifications.splice(_certIdx,1);
+  closeOverlay('cert-ov');renderCerts();setTimeout(initReveal,60);saveAll();
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  renderAll();
+  setTimeout(()=>{initReveal();loadCardThumbs();},80);
+  // Pull latest data from GitHub in background
+  loadFromGitHub().then(()=>{ renderAll(); setTimeout(()=>{initReveal();loadCardThumbs();},60); });
+  // Wire up upload zones
+  setupImgUpload();
+  setupPdfUpload();
+  // video is now a URL field — no upload zone needed
+  setupResumeUpload();
+
+  // Auto-bullet: pressing Enter in bullet textareas continues with •
+  document.addEventListener('keydown', e=>{
+    if(e.key!=='Enter') return;
+    const ta=e.target;
+    if(!ta.classList||!ta.classList.contains('bullet-ta')) return;
+    e.preventDefault();
+    const start=ta.selectionStart, end=ta.selectionEnd;
+    const val=ta.value;
+    // Get current line to decide if we should continue bullets
+    const lineStart=val.lastIndexOf('\n',start-1)+1;
+    const currentLine=val.substring(lineStart,start);
+    const isBullet=/^[•\-\*]\s/.test(currentLine)||currentLine.trim()==='';
+    const insert=isBullet ? '\n• ' : '\n';
+    ta.value=val.substring(0,start)+insert+val.substring(end);
+    ta.selectionStart=ta.selectionEnd=start+insert.length;
+    ta.dispatchEvent(new Event('input'));
+  });
+
+  // On focus into a bullet-ta, if empty auto-start with bullet
+  document.querySelectorAll('.bullet-ta').forEach(ta=>{
+    ta.addEventListener('focus',()=>{
+      if(!ta.value.trim()){ta.value='• ';}
+    });
+    ta.addEventListener('blur',()=>{
+      if(ta.value.trim()==='•'||ta.value.trim()==='• '){ta.value='';}
+    });
+  });
+});
+</script>
+
+<!-- ── PDF VIEWER OVERLAY ── -->
+<div id="pdf-viewer-overlay">
+  <div class="pdf-viewer-bar">
+    <span class="pdf-viewer-title" id="pdf-viewer-title">Document</span>
+    <div class="pdf-viewer-actions">
+      <a class="pdf-dl-btn" id="pdf-dl-btn" href="#" download>&#8659; Download</a>
+      <button class="pdf-close-btn" onclick="closePdfViewer()" title="Close">&#10005;</button>
+    </div>
+  </div>
+  <div class="pdf-iframe-wrap">
+    <div class="pdf-loading" id="pdf-loading">
+      <div class="pdf-spinner"></div>
+      <span>Loading PDF...</span>
+    </div>
+    <iframe id="pdf-iframe" src="" onload="document.getElementById('pdf-loading').classList.add('hidden')"></iframe>
+  </div>
+</div>
+
+
+<!-- ══════ HERO EDITOR ══════ -->
+<div class="overlay" id="hero-ov">
+  <div class="modal" style="max-width:600px;">
+    <h3>✏️ Edit Hero</h3>
+    <label>Eyebrow Text</label>
+    <input type="text" id="he-eyebrow" placeholder="Mechanical Engineering · Delhi Technological University">
+    <label>Your Name (use | for line break)</label>
+    <input type="text" id="he-name" placeholder="SHUBHAM|KUMAR">
+    <label>Tagline Items (comma-separated)</label>
+    <input type="text" id="he-tagline" placeholder="Plant Design, FEA & CFD Simulation, CAD Modelling">
+    <label>Sub-line</label>
+    <input type="text" id="he-sub" placeholder="B.Tech Mechanical Engineering · Class of 2027">
+    <label>Stats (format: num|label, one per line)</label>
+    <textarea id="he-stats" rows="4" placeholder="2|Internships&#10;6|Projects&#10;5|Certifications&#10;'27|Graduation"></textarea>
+    <div class="modal-foot">
+      <button class="btn-cancel" onclick="closeOverlay('hero-ov')">Cancel</button>
+      <button class="btn-save" onclick="saveHero()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ ABOUT EDITOR ══════ -->
+<div class="overlay" id="about-ov">
+  <div class="modal" style="max-width:640px;">
+    <h3>✏️ Edit About</h3>
+    <label>Section Heading</label>
+    <input type="text" id="ab-heading" placeholder="Engineering With Purpose">
+    <label>Bio Text (use blank line to separate paragraphs)</label>
+    <textarea id="ab-bio" rows="8" placeholder="Write your bio here..."></textarea>
+    <label>Highlight Cards (format: LABEL|description, one per line, max 4)</label>
+    <textarea id="ab-highlights" rows="4" placeholder="EIL|Plant Design Intern&#10;DRDO|Research Intern&#10;DTU|Mechanical Engineering&#10;Dell|Aspire Scholar 2023"></textarea>
+    <div class="modal-foot">
+      <button class="btn-cancel" onclick="closeOverlay('about-ov')">Cancel</button>
+      <button class="btn-save" onclick="saveAbout()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ EXPERIENCE EDITOR ══════ -->
+<div class="overlay" id="exp-ov">
+  <div class="modal" style="max-width:640px;">
+    <h3 id="exp-modal-h">✏️ Edit Experience</h3>
+    <label>Role / Title</label>
+    <input type="text" id="exp-role" placeholder="Plant Design Intern">
+    <label>Company</label>
+    <input type="text" id="exp-company" placeholder="Engineers India Limited (EIL)">
+    <label>Date / Location</label>
+    <input type="text" id="exp-date" placeholder="Jun '25 – Jul '25 · Gurugram">
+    <label>Accent Color</label>
+    <select id="exp-color"><option value="cyan">Cyan</option><option value="orange">Orange</option></select>
+    <label>Bullet Points (one per line)</label>
+    <textarea id="exp-bullets" rows="5" placeholder="Drafted piping layouts in AutoCAD...&#10;Collaborated with senior engineers..."></textarea>
+    <label>Badge Text (optional, e.g. ★ Excellent Performance Rating)</label>
+    <input type="text" id="exp-badge" placeholder="★ Excellent Performance Rating">
+    <div class="modal-foot">
+      <button class="btn-del" id="exp-del-btn" onclick="deleteExp()">🗑 Delete</button>
+      <button class="btn-cancel" onclick="closeOverlay('exp-ov')">Cancel</button>
+      <button class="btn-save" onclick="saveExp()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SKILLS EDITOR ══════ -->
+<div class="overlay" id="skills-ov">
+  <div class="modal" style="max-width:600px;">
+    <h3 id="skills-modal-h">✏️ Edit Skill Category</h3>
+    <label>Category Name</label>
+    <input type="text" id="sk-cat" placeholder="Design Tools">
+    <label>Skills (comma-separated)</label>
+    <textarea id="sk-items" rows="3" placeholder="Siemens NX, SolidWorks, AutoCAD, Fusion 360"></textarea>
+    <div class="modal-foot">
+      <button class="btn-del" id="sk-del-btn" onclick="deleteSkill()">🗑 Delete</button>
+      <button class="btn-cancel" onclick="closeOverlay('skills-ov')">Cancel</button>
+      <button class="btn-save" onclick="saveSkill()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ ACHIEVEMENT EDITOR ══════ -->
+<div class="overlay" id="ach-ov">
+  <div class="modal" style="max-width:560px;">
+    <h3 id="ach-modal-h">✏️ Edit Achievement</h3>
+    <label>Icon (emoji)</label>
+    <input type="text" id="ach-icon" placeholder="🏅">
+    <label>Title</label>
+    <input type="text" id="ach-title" placeholder="Dell Aspire Scholar 2023">
+    <label>Description</label>
+    <textarea id="ach-desc" rows="3" placeholder="Selected among top national scholars..."></textarea>
+    <div class="modal-foot">
+      <button class="btn-del" id="ach-del-btn" onclick="deleteAch()">🗑 Delete</button>
+      <button class="btn-cancel" onclick="closeOverlay('ach-ov')">Cancel</button>
+      <button class="btn-save" onclick="saveAch()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ CERTIFICATION EDITOR ══════ -->
+<div class="overlay" id="cert-ov">
+  <div class="modal" style="max-width:540px;">
+    <h3 id="cert-modal-h">✏️ Edit Certification</h3>
+    <label>Certification Name</label>
+    <input type="text" id="cert-name" placeholder="SOLIDWORKS Advanced Sketching">
+    <div class="modal-foot">
+      <button class="btn-del" id="cert-del-btn" onclick="deleteCert()">🗑 Delete</button>
+      <button class="btn-cancel" onclick="closeOverlay('cert-ov')">Cancel</button>
+      <button class="btn-save" onclick="saveCert()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden file inputs (outside any clickable zone to prevent click bubbling) -->
+<input type="file" id="img-file-input"    accept="image/*"                    multiple style="display:none">
+<input type="file" id="pdf-file-input"    accept=".pdf"                                style="display:none">
+<input type="file" id="resume-file-input" accept=".pdf"                                style="display:none">
+</body>
+</html>
