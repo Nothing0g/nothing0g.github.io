@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shubham Kumar — Product Designer & Systems Architect</title>
+  <meta name="description" content="Portfolio of Shubham Kumar, Product Designer bridging Mechanical/Industrial Engineering, Data Analytics, and Systems-Level UX Design.">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/prototypes.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. NAVIGATION (Simple & Clean)
+       ========================================================================== -->
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#work" class="nav-link">Work</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right-actions">
+        <a href="https://nothing0g.github.io/analyst/" target="_blank" rel="noopener" class="nav-analyst-btn">
+          Analyst Site ↗
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       2. HERO SECTION (With Floating Badges & Animations)
+       ========================================================================== -->
+  <section id="home" class="hero-section">
+    <div class="container hero-grid">
+      
+      <!-- Left Content Column -->
+      <div class="reveal-on-scroll is-visible">
+        <div class="hero-pill-tag">
+          <span>👋</span>
+          <span>Hello All</span>
+        </div>
+
+        <h1 class="hero-headline">
+          I’m Shubham Kumar,<br>
+          A Product Designer<br>
+          and Systems Thinker
+        </h1>
+
+        <p class="hero-subtext">
+          I design enterprise tools that explain their own intelligence and consumer flows that respect human attention. Bridging Mechanical Engineering, Data Analytics, and Systems-Level UX.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#work" class="btn-primary">
+            <span>View My Work</span>
+            <span>🗂</span>
+          </a>
+          <a href="#contact" class="btn-secondary">
+            Contact Me
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Visual Column (Floating Avatar & Animated Badges) -->
+      <div class="hero-avatar-wrapper reveal-on-scroll is-visible delay-1">
+        
+        <!-- Floating Pill 1 -->
+        <div class="floating-pill pill-top-left">
+          <span>⚡</span>
+          <span>8pt Auto Layout</span>
+        </div>
+
+        <!-- Floating Pill 2 -->
+        <div class="floating-pill pill-top-right">
+          <span>📊</span>
+          <span>Explainable ML</span>
+        </div>
+
+        <!-- Floating Pill 3 -->
+        <div class="floating-pill pill-bottom-right">
+          <span>✨</span>
+          <span>Systems UX</span>
+        </div>
+
+        <img src="assets/shubham_hero_avatar.jpg" alt="Shubham Kumar - Product Designer" class="hero-avatar-img">
+        <div class="hero-avatar-caption">
+          <span>I'm Shubham</span>
+          <span>✦ Systems UX & Dev Mode</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. "MY RECENT WORK" SECTION (Stacked Cards with 3D Hover & Shimmer)
+       ========================================================================== -->
+  <section id="work" class="work-section">
+    <div class="container">
+      <h2 class="section-title reveal-on-scroll">My Recent Work</h2>
+
+      <div class="work-cards-stack">
+
+        <!-- WORK CARD 1: RETAINOS (B2B FLAGSHIP) -->
+        <article class="work-card reveal-on-scroll" data-tilt>
+          <div class="work-card-info">
+            <div class="work-card-pill-row">
+              <span class="work-badge highlight">Flagship B2B</span>
+              <span class="work-badge">HR Tech / Predictive ML</span>
+            </div>
+            
+            <h3 class="work-card-title">RetainOS Console</h3>
+            
+            <p class="work-card-desc">
+              Transforming employee attrition modeling from post-mortem graveyards into proactive, explainable intervention design. Features explainable risk telemetry, privacy-first cohort masking, and a real-time What-If sandbox.
+            </p>
+
+            <a href="#/retainos" class="work-card-link open-case-study" data-study="retainos">
+              View Case Study →
+            </a>
+          </div>
+
+          <!-- Native Embedded Interactive Component Preview -->
+          <div class="work-card-preview-container">
+            <div style="background: #FFFFFF; border-radius: 14px; border: 1px solid var(--hairline); padding: 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
+              
+              <!-- Mini Header -->
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--hairline);">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span class="status-dot-pulse" style="width: 8px; height: 8px; border-radius: 50%; background: var(--status-nominal); display: inline-block;"></span>
+                  <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--ink-primary);">RETAINOS COHORT TELEMETRY</span>
+                  <span class="mono-chip critical" style="font-size: 10px;">HIGH RISK FLAG</span>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-tertiary);">CLICK ROW TO INSPECT</span>
+              </div>
+
+              <!-- Interactive Cohort Table Row -->
+              <div id="hero-retainos-row" style="background: #FAF7F2; border: 1px solid var(--hairline-strong); border-radius: 10px; padding: 12px 14px; cursor: pointer; transition: all 0.2s ease; margin-bottom: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 28px; height: 28px; border-radius: 6px; background: #EAE3D9; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 11px; font-weight: 600;">PD</div>
+                    <div>
+                      <div style="font-size: 13px; font-weight: 600; color: var(--ink-primary);">Staff Product Designer</div>
+                      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-tertiary);">EMP-7411 · Masked Cohort</div>
+                    </div>
+                  </div>
+                  <span class="mono-chip critical" style="font-size: 11px; font-weight: 600;">72% Flight Risk</span>
+                </div>
+              </div>
+
+              <!-- Explainable Risk Drivers (Anti-Black-Box UI) -->
+              <div style="background: #FFFFFF; border: 1px solid var(--hairline); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px;">
+                <div style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-copper); font-weight: 600; margin-bottom: 6px; text-transform: uppercase;">
+                  Explainable Risk Telemetry (Decomposed)
+                </div>
+                <div style="font-size: 12px; color: var(--ink-secondary); line-height: 1.4;">
+                  • <strong>+34% Risk:</strong> Overtime exceeded 15hrs/wk for 3 consecutive months<br>
+                  • <strong>+28% Risk:</strong> Time in current role &gt; 32 months without band progression
+                </div>
+              </div>
+
+              <!-- Live What-If Sandbox Preview -->
+              <div style="display: flex; justify-content: space-between; align-items: center; background: #F4ECE1; border-radius: 8px; padding: 8px 12px; font-size: 12px;">
+                <span style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-primary);">What-If: +12% Market Comp</span>
+                <span style="font-family: var(--font-mono); font-weight: 600; color: var(--status-nominal);">Risk drops: 72% → 41%</span>
+              </div>
+
+            </div>
+          </div>
+        </article>
+
+        <!-- WORK CARD 2: UBER FARE LOCK (B2C MOBILE UX) -->
+        <article class="work-card reveal-on-scroll delay-1" data-tilt>
+          <div class="work-card-info">
+            <div class="work-card-pill-row">
+              <span class="work-badge highlight">B2C Mobile UX</span>
+              <span class="work-badge">Marketplace / Dynamic Pricing</span>
+            </div>
+            
+            <h3 class="work-card-title">Fare Lock & Match Guarantee</h3>
+            
+            <p class="work-card-desc">
+              Redesigning the ride-hailing checkout to eliminate surge fare shock and fulfillment anxiety with upfront locked pricing and transparent driver telemetry.
+            </p>
+
+            <a href="#/uber" class="work-card-link open-case-study" data-study="uber">
+              View Case Study →
+            </a>
+          </div>
+
+          <!-- Native Embedded Interactive Component Preview -->
+          <div class="work-card-preview-container">
+            <div style="max-width: 380px; margin: 0 auto; width: 100%; background: #FFFFFF; border-radius: 18px; border: 1px solid var(--hairline-strong); padding: 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.04);">
+              
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <span class="radar-sonar-emitter"></span>
+                  <span style="font-size: 12px; font-weight: 600; color: var(--ink-primary);">Cyber City → South Ext II</span>
+                </div>
+                <span class="mono-chip warning" style="font-size: 10px;">1.4× PEAK SURGE</span>
+              </div>
+
+              <!-- Interactive Expandable Fare Pill -->
+              <div id="card-uber-fare-pill" class="uber-fare-pill-card expanded" style="margin-bottom: 12px; cursor: pointer;">
+                <div class="fare-pill-summary-row">
+                  <div class="fare-pill-left">
+                    <span class="fare-pill-tag">✓ ALL-IN LOCKED</span>
+                    <span class="fare-pill-amount">₹380</span>
+                  </div>
+                  <span class="fare-pill-chevron">▾</span>
+                </div>
+                <div class="fare-breakdown-details" style="display: block;">
+                  <div class="breakdown-line-item">
+                    <span>Base Fare</span>
+                    <span class="amt">₹290</span>
+                  </div>
+                  <div class="breakdown-line-item">
+                    <span>High-Demand Boost</span>
+                    <span class="amt" style="color: var(--status-warning);">+₹60</span>
+                  </div>
+                  <div class="breakdown-line-item">
+                    <span>MCD State Toll</span>
+                    <span class="amt">+₹30</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2-Tier Fulfillment Confidence Selector -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <div style="border: 1.5px solid var(--btn-primary-bg); background: #FAF7F2; border-radius: 8px; padding: 8px; text-align: left;">
+                  <div style="font-size: 11px; font-weight: 600;">Standard</div>
+                  <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600;">₹380</div>
+                  <div style="font-size: 9px; color: var(--ink-tertiary); margin-top: 2px;">65% match in 6m</div>
+                </div>
+                <div style="border: 1px solid var(--hairline); background: #FFFFFF; border-radius: 8px; padding: 8px; text-align: left;">
+                  <div style="font-size: 11px; font-weight: 600; color: var(--accent-copper);">Guaranteed</div>
+                  <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 600;">₹420</div>
+                  <div style="font-size: 9px; color: var(--status-nominal); margin-top: 2px;">98% in 90 sec</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </article>
+
+        <!-- WORK CARD 3: PRISM-METRIC (DESIGN SYSTEMS CRAFT) -->
+        <article class="work-card reveal-on-scroll delay-2" data-tilt>
+          <div class="work-card-info">
+            <div class="work-card-pill-row">
+              <span class="work-badge highlight">Design Systems Craft</span>
+              <span class="work-badge">Engineering Handoff (Dev Mode)</span>
+            </div>
+            
+            <h3 class="work-card-title">Prism-Metric Library</h3>
+            
+            <p class="work-card-desc">
+              A production-coded component showcase bridging Design Systems and Engineering Handoff (Dev Mode), featuring rigid 8pt spatial scales, semantic status tokens, and interactive token inspection.
+            </p>
+
+            <a href="#/prism" class="work-card-link open-case-study" data-study="prism">
+              View Case Study →
+            </a>
+          </div>
+
+          <!-- Native Embedded Interactive Component Preview -->
+          <div class="work-card-preview-container">
+            <div style="background: #FFFFFF; border-radius: 14px; border: 1px solid var(--hairline); padding: 20px;">
+              
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--ink-primary);">TOKEN STATUS MATRIX</span>
+                <span class="mono-chip copper" style="font-size: 10px;">8PT AUTO LAYOUT</span>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <div class="prism-status-badge nominal comfortable" style="justify-content: space-between; width: 100%;">
+                  <span>SYSTEM NOMINAL</span>
+                  <span>99.9% Uptime</span>
+                </div>
+                <div class="prism-status-badge warning comfortable" style="justify-content: space-between; width: 100%;">
+                  <span>RETENTION DRIFT</span>
+                  <span>54% Attention</span>
+                </div>
+                <div class="prism-status-badge critical comfortable" style="justify-content: space-between; width: 100%;">
+                  <span>HIGH FLIGHT RISK</span>
+                  <span>78% Alert</span>
+                </div>
+              </div>
+
+              <div style="margin-top: 14px; padding-top: 10px; border-top: 1px dashed var(--hairline-strong); display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--ink-tertiary);">
+                <span>--radius-sm: 8px</span>
+                <span>--space-base: 8px</span>
+                <span>Inter + JetBrains Mono</span>
+              </div>
+
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. "A LITTLE BIT ABOUT ME" SECTION (Exact 2-Column Structure)
+       ========================================================================== -->
+  <section id="about" class="about-section">
+    <div class="container about-grid">
+      
+      <!-- Left Editorial Story -->
+      <div class="about-text-content reveal-on-scroll">
+        <h2 class="section-title">A Little Bit About Me</h2>
+        
+        <div class="about-paragraphs">
+          <p>
+            I am Shubham Kumar from <strong>Lucknow, India</strong>. My journey into Product Design is grounded in <strong>Mechanical & Industrial Engineering</strong> and <strong>Predictive Data Analytics</strong>.
+          </p>
+          <p>
+            At <a href="https://nothing0g.github.io/analyst/" target="_blank" rel="noopener" style="text-decoration: underline; color: var(--btn-primary-bg); font-weight: 600;">nothing0g.github.io/analyst</a>, I analyzed Uber ride demand surge distributions and predictive employee turnover models. That analytical rigor taught me that the hardest problem in tech isn't generating data—it's designing intuitive, transparent interfaces that respect human judgment.
+          </p>
+          <p>
+            Besides systems design, I enjoy studying CAD schematics, analyzing urban transit flows, and crafting handoff-ready component libraries with rigid 8pt spatial constraints.
+          </p>
+        </div>
+
+        <a href="#contact" class="btn-secondary">
+          Contact Me
+        </a>
+      </div>
+
+      <!-- Right Visual Column (Standing Character Illustration) -->
+      <div class="reveal-on-scroll delay-1">
+        <img src="assets/shubham_about_avatar.jpg" alt="Shubham Kumar holding SYSTEMS sign" class="about-avatar-img">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. FOOTER / "LET'S WORK TOGETHER..." SECTION
+       ========================================================================== -->
+  <footer id="contact" class="footer-cta-section">
+    <div class="container">
+      
+      <h2 class="footer-headline reveal-on-scroll">
+        Let’s work together and<br>
+        make complex systems clear,<br>
+        explainable, and human.
+      </h2>
+
+      <div class="reveal-on-scroll delay-1">
+        <a href="mailto:shubham@example.com" class="btn-primary" style="padding: 14px 32px; font-size: 16px;">
+          Contact Me
+        </a>
+      </div>
+
+      <div class="footer-bottom-bar reveal-on-scroll delay-2">
+        <div style="font-family: var(--font-mono); font-size: 13px; color: var(--ink-tertiary);">
+          © 2026 Shubham Kumar · Designed with Precision Blueprint & Warm Editorial Systems
+        </div>
+
+        <div class="footer-social-links">
+          <a href="https://nothing0g.github.io/analyst/" target="_blank" rel="noopener" class="social-icon-link">
+            <span>🌐</span> Analyst Site
+          </a>
+          <a href="https://github.com/nothing0g" target="_blank" rel="noopener" class="social-icon-link">
+            <span>💻</span> GitHub
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon-link">
+            <span>💼</span> LinkedIn
+          </a>
+          <a href="mailto:shubham@example.com" class="social-icon-link">
+            <span>✉️</span> Email
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       6. CASE STUDY DEEP DIVE MODALS (Natively Integrated)
+       ========================================================================== -->
+  
+  <!-- RETAINOS MODAL -->
+  <div id="modal-retainos" class="case-study-modal">
+    <div class="modal-content-container">
+      <div class="modal-close-bar">
+        <span style="font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--ink-primary);">
+          RetainOS: Enterprise Retention & Intervention Console
+        </span>
+        <button class="modal-close-btn" data-close-modal>
+          Close Case Study ✕
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- Case Study Header -->
+        <div style="margin-bottom: 32px; border-bottom: 1px solid var(--hairline); padding-bottom: 24px;">
+          <span class="mono-chip critical" style="margin-bottom: 12px;">Case Study 01 — B2B Enterprise</span>
+          <h1 style="font-family: var(--font-serif); font-size: 38px; margin-bottom: 12px; line-height: 1.2;">
+            RetainOS: Transforming HR Attrition Analytics into Explainable Intervention Design
+          </h1>
+          <p style="font-size: 17px; color: var(--ink-secondary); line-height: 1.6; max-width: 820px;">
+            A senior-caliber enterprise console converting passive machine learning risk scores into transparent, human-readable drivers and live What-If intervention workflows.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px;">
+            <div style="background: #FAF7F2; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--hairline);">
+              <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-tertiary);">ROLE</div>
+              <div style="font-size: 13px; font-weight: 600;">Staff Product Designer</div>
+            </div>
+            <div style="background: #FAF7F2; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--hairline);">
+              <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-tertiary);">TIMELINE</div>
+              <div style="font-size: 13px; font-weight: 600;">6 Weeks (End-to-End)</div>
+            </div>
+            <div style="background: #FAF7F2; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--hairline);">
+              <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-tertiary);">FOUNDATION</div>
+              <div style="font-size: 13px; font-weight: 600;">Predictive ML Attrition</div>
+            </div>
+            <div style="background: #FAF7F2; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--hairline);">
+              <div style="font-family: var(--font-mono); font-size: 10px; color: var(--ink-tertiary);">IMPACT</div>
+              <div style="font-size: 13px; font-weight: 600; color: var(--status-nominal);">34% ↓ Attrition Risk</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Problem -->
+        <div style="margin-bottom: 40px;">
+          <h3 style="font-family: var(--font-serif); font-size: 24px; margin-bottom: 12px;">The Post-Mortem Problem</h3>
+          <p style="font-size: 15px; color: var(--ink-secondary); line-height: 1.7; margin-bottom: 16px;">
+            Traditional HR analytics tools are <strong>post-mortem graveyards</strong>. They showcase elegant historical turnover bar charts months after high-performing engineers have already resigned. When tools attempt predictive modeling, they output a black-box <em>"Flight Risk: 78%"</em> tag that managers ignore because they don't trust the math and don't know what to do next.
+          </p>
+        </div>
+
+        <!-- FULL INTERACTIVE PROTOTYPE EMBEDDED -->
+        <div style="margin-bottom: 48px;">
+          <h3 style="font-family: var(--font-serif); font-size: 24px; margin-bottom: 12px;">Live Interactive Prototype: Risk Table & What-If Action Sandbox</h3>
+          <p style="font-size: 14px; color: var(--ink-secondary); margin-bottom: 16px;">
+            Click any row to open the side inspector drawer. Toggle the What-If sandbox interventions to watch the predicted attrition probability recalculate live:
+          </p>
+
+          <div class="prototype-container">
+            <div class="prototype-body retainos-wrapper" style="min-height: 520px;">
+              
+              <!-- Toolbar -->
+              <div class="retainos-table-toolbar">
+                <div class="retainos-filter-group">
+                  <span class="retainos-filter-pill active" data-filter="all">All Cohorts (4)</span>
+                  <span class="retainos-filter-pill" data-filter="critical">Critical Risk (&gt;70%)</span>
+                  <span class="retainos-filter-pill" data-filter="engineering">Engineering</span>
+                  <span class="retainos-filter-pill" data-filter="design">Design</span>
+                </div>
+                <div class="retainos-privacy-tag">
+                  <span class="mono-chip" style="font-size: 10px;">🛡 Cohort Masking Active</span>
+                </div>
+              </div>
+
+              <!-- Table -->
+              <table class="retainos-table">
+                <thead>
+                  <tr>
+                    <th>Role / Cohort</th>
+                    <th>Department</th>
+                    <th>Risk Score</th>
+                    <th>Primary Risk Driver</th>
+                    <th>6-Mo Trend</th>
+                  </tr>
+                </thead>
+                <tbody id="retainos-table-body">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+
+              <!-- Side Inspector Drawer -->
+              <aside id="retainos-drawer" class="retainos-drawer">
+                <div class="drawer-header">
+                  <div class="drawer-title-group">
+                    <h4 id="drawer-emp-title">Staff Product Designer</h4>
+                    <span id="drawer-emp-meta">EMP-7411 · Design Systems</span>
+                  </div>
+                  <button id="retainos-close-drawer" class="drawer-close-btn" title="Close Panel">✕</button>
+                </div>
+
+                <div class="drawer-body">
+                  <div class="gauge-card">
+                    <div class="gauge-header">
+                      <span style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--ink-tertiary);">Attrition Probability</span>
+                      <span class="mono-chip critical">Critical Attention</span>
+                    </div>
+                    <div id="drawer-gauge-score" class="gauge-score-large critical">72%</div>
+                    <div class="gauge-bar-track">
+                      <div id="drawer-gauge-fill" class="gauge-bar-fill critical" style="width: 72%;"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="drivers-list-title">
+                      <span>Explainable Risk Telemetry</span>
+                      <span style="color: var(--accent-copper);">3 Weighted Drivers</span>
+                    </div>
+                    <div id="drawer-drivers-container"></div>
+                  </div>
+
+                  <!-- WHAT-IF ACTION SANDBOX -->
+                  <div class="simulator-card">
+                    <div class="simulator-header">
+                      <span class="simulator-title">⚡ What-If Action Sandbox</span>
+                      <span class="mono-chip copper" style="font-size: 10px;">Real-Time ML</span>
+                    </div>
+                    <p style="font-size: 12px; color: var(--ink-secondary); margin-bottom: 12px;">
+                      Test potential retention packages before committing HR budget:
+                    </p>
+
+                    <div class="simulator-toggles-grid">
+                      <div class="intervention-toggle-item" data-intervention="comp">
+                        <div class="intervention-info">
+                          <span class="intervention-name">+12% Market Comp Adjustment</span>
+                          <span class="intervention-delta">-16% Risk Reduction</span>
+                        </div>
+                        <div class="switch-control"></div>
+                      </div>
+
+                      <div class="intervention-toggle-item" data-intervention="remote">
+                        <div class="intervention-info">
+                          <span class="intervention-name">Shift to Flexible Remote Tier</span>
+                          <span class="intervention-delta">-15% Risk Reduction</span>
+                        </div>
+                        <div class="switch-control"></div>
+                      </div>
+
+                      <div class="intervention-toggle-item" data-intervention="band">
+                        <div class="intervention-info">
+                          <span class="intervention-name">Accelerate Band Progression Review</span>
+                          <span class="intervention-delta">-13% Risk Reduction</span>
+                        </div>
+                        <div class="switch-control"></div>
+                      </div>
+
+                      <div class="intervention-toggle-item" data-intervention="mentor">
+                        <div class="intervention-info">
+                          <span class="intervention-name">Assign Leadership Pool Mentor</span>
+                          <span class="intervention-delta">-7% Risk Reduction</span>
+                        </div>
+                        <div class="switch-control"></div>
+                      </div>
+                    </div>
+
+                    <div class="simulator-result-box">
+                      <span id="sim-delta-label" class="sim-delta-label">No Interventions Active</span>
+                      <div class="sim-score-preview">
+                        <span id="sim-old-score" class="sim-old-score">72%</span>
+                        <span id="sim-new-score" class="sim-new-score critical">72%</span>
+                      </div>
+                    </div>
+
+                    <button id="btn-sim-approval" class="btn-secondary btn-workflow" disabled>
+                      Select Interventions to Simulate
+                    </button>
+                  </div>
+
+                </div>
+              </aside>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Rejected Approaches -->
+        <div style="background: #FAF7F2; border: 1px solid var(--hairline); border-radius: 14px; padding: 24px; margin-bottom: 32px;">
+          <span class="mono-chip critical" style="margin-bottom: 8px;">REJECTED IN DESIGN REVIEW</span>
+          <h4 style="font-family: var(--font-serif); font-size: 18px; margin-bottom: 8px;">
+            3D Force-Directed Network Graph of Company Departments
+          </h4>
+          <p style="font-size: 14px; color: var(--ink-secondary); line-height: 1.6;">
+            <strong>Why it was killed:</strong> Impressive in a pitch deck, but completely useless for an engineering director triaging 200 reports at 9:00 AM on Monday. 3D nodes overlap and induce cognitive fatigue. Replaced with an uncompromising 8pt sortable data table with inline sparklines and an inspector drawer.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- UBER MODAL -->
+  <div id="modal-uber" class="case-study-modal">
+    <div class="modal-content-container">
+      <div class="modal-close-bar">
+        <span style="font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--ink-primary);">
+          Uber Peak-Demand: Fare Lock & Match Guarantee
+        </span>
+        <button class="modal-close-btn" data-close-modal>
+          Close Case Study ✕
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <div style="margin-bottom: 32px; border-bottom: 1px solid var(--hairline); padding-bottom: 24px;">
+          <span class="mono-chip warning" style="margin-bottom: 12px;">Case Study 02 — B2C Mobile UX</span>
+          <h1 style="font-family: var(--font-serif); font-size: 38px; margin-bottom: 12px; line-height: 1.2;">
+            Fare Lock & Match Guarantee: Eliminating Surge Checkout Friction
+          </h1>
+          <p style="font-size: 17px; color: var(--ink-secondary); line-height: 1.6; max-width: 820px;">
+            Redesigning the ride-hailing checkout during 1.4x+ peak demand surges to eliminate Fare Shock (hidden charges) and Fulfillment Anxiety (blind spinning radars).
+          </p>
+        </div>
+
+        <!-- FULL UBER PHONE PROTOTYPE EMBEDDED -->
+        <div style="display: flex; justify-content: center; margin-bottom: 40px;">
+          <div class="uber-phone-frame" style="width: 100%; max-width: 440px;">
+            <div class="phone-speaker-notch">
+              <span>18:45</span>
+              <span>●●● 5G · 84%</span>
+            </div>
+
+            <div class="phone-screen-content">
+              <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid var(--hairline);">
+                <div>
+                  <div style="font-size: 11px; font-family: var(--font-mono); color: var(--ink-tertiary);">PICKUP · CYBER CITY GURGAON</div>
+                  <div style="font-size: 13px; font-weight: 600; color: var(--ink-primary);">Destination: South Extension II</div>
+                </div>
+                <span class="mono-chip warning" style="font-size: 10px;">1.4× PEAK SURGE</span>
+              </div>
+
+              <!-- Fare Breakdown Pill -->
+              <div id="modal-uber-fare-pill" class="uber-fare-pill-card expanded">
+                <div class="fare-pill-summary-row">
+                  <div class="fare-pill-left">
+                    <span class="fare-pill-tag">✓ ALL-IN LOCKED</span>
+                    <span class="fare-pill-amount">₹380</span>
+                  </div>
+                  <span class="fare-pill-chevron">▾</span>
+                </div>
+                <div class="fare-breakdown-details" style="display: block;">
+                  <div class="breakdown-line-item">
+                    <span>Base Fare (Distance & Time)</span>
+                    <span class="amt">₹290</span>
+                  </div>
+                  <div class="breakdown-line-item">
+                    <span>High-Demand Boost</span>
+                    <span class="amt" style="color: var(--status-warning);">+₹60</span>
+                  </div>
+                  <div class="breakdown-line-item">
+                    <span>MCD State Toll (Pre-Calculated)</span>
+                    <span class="amt">+₹30</span>
+                  </div>
+                  <div class="breakdown-guarantee-note">
+                    <span>🔒 Zero Variance Guarantee: No surprise charges at drop-off.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Confidence Selector -->
+              <div class="confidence-selector-container">
+                <div id="modal-tier-standard" class="confidence-tier-card selected">
+                  <div class="tier-top-row">
+                    <span class="tier-name"><span>Standard Wait</span></span>
+                    <span class="tier-price-mono">₹380</span>
+                  </div>
+                  <div class="tier-telemetry-row">
+                    <span>~65% match within 6 mins</span>
+                    <span class="driver-dots-group">
+                      <span class="driver-dot"></span>
+                      <span class="driver-dot"></span>
+                      <span class="driver-dot"></span>
+                      <span style="font-size: 10px;">3 drivers near</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div id="modal-tier-guaranteed" class="confidence-tier-card">
+                  <div class="tier-top-row">
+                    <span class="tier-name">
+                      <span>Guaranteed Lock</span>
+                      <span class="mono-chip copper" style="font-size: 9px;">PRIORITY</span>
+                    </span>
+                    <span class="tier-price-mono">₹420</span>
+                  </div>
+                  <div class="tier-telemetry-row">
+                    <span class="sla-badge-amber">⚡ 98% Match in 90 sec</span>
+                    <span style="font-size: 10px; color: var(--ink-tertiary);">Or free Premier upgrade</span>
+                  </div>
+                </div>
+              </div>
+
+              <button id="modal-uber-confirm-btn" class="btn-primary" style="width: 100%; padding: 12px; font-size: 14px;">
+                Request Uber Go · <span style="font-family: var(--font-mono);">₹380</span>
+              </button>
+
+              <!-- Radar Step Queue -->
+              <div class="radar-queue-card">
+                <div class="radar-header">
+                  <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--ink-primary);">POST-BOOKING TELEMETRY</span>
+                  <span id="modal-radar-timer-chip" class="mono-chip copper" style="font-size: 10px;">Pinging 4 drivers...</span>
+                </div>
+                <div class="radar-step-list">
+                  <div id="modal-radar-step-1" class="radar-step-item active">
+                    <div class="radar-step-icon">1</div>
+                    <div class="radar-step-content">
+                      <span class="radar-step-title">Pinging 4 drivers within 800m</span>
+                      <span class="radar-step-meta">Hex-zone Cyber Hub North · SLA 90s</span>
+                    </div>
+                  </div>
+                  <div id="modal-radar-step-2" class="radar-step-item">
+                    <div class="radar-step-icon">2</div>
+                    <div class="radar-step-content">
+                      <span class="radar-step-title">Driver #2 reviewing fare & route</span>
+                      <span class="radar-step-meta">High acceptance affinity score</span>
+                    </div>
+                  </div>
+                  <div id="modal-radar-step-3" class="radar-step-item">
+                    <div class="radar-step-icon">3</div>
+                    <div class="radar-step-content">
+                      <span class="radar-step-title">Driver locked — arriving in 4 min</span>
+                      <span class="radar-step-meta">Rajesh K. · Swift Dzire (4.9★)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PRISM MODAL -->
+  <div id="modal-prism" class="case-study-modal">
+    <div class="modal-content-container">
+      <div class="modal-close-bar">
+        <span style="font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--ink-primary);">
+          Prism-Metric: Component Library & Dev Mode
+        </span>
+        <button class="modal-close-btn" data-close-modal>
+          Close Case Study ✕
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <div style="margin-bottom: 32px; border-bottom: 1px solid var(--hairline); padding-bottom: 24px;">
+          <span class="mono-chip copper" style="margin-bottom: 12px;">Craft Project — Design Systems</span>
+          <h1 style="font-family: var(--font-serif); font-size: 38px; margin-bottom: 12px; line-height: 1.2;">
+            Prism-Metric: Production-Coded Design Systems & Dev Mode
+          </h1>
+          <p style="font-size: 17px; color: var(--ink-secondary); line-height: 1.6; max-width: 820px;">
+            Demonstrating how to bridge Design Systems and Engineering Handoff: multi-state badge matrices, draggable data scrubbers, and built-in 8pt grid token inspection.
+          </p>
+        </div>
+
+        <!-- BADGE SYSTEM PLAYGROUND -->
+        <div class="prototype-container cad-frame dev-mode-container" id="modal-badge-playground-container" style="margin-bottom: 40px;">
+          <div class="dev-grid-mesh"></div>
+          <div class="playground-toolbar">
+            <div class="toolbar-group">
+              <span class="toolbar-label">State:</span>
+              <div class="toolbar-btn-group">
+                <button class="toolbar-btn active" data-badge-state="default">Default</button>
+                <button class="toolbar-btn" data-badge-state="hover">Hover</button>
+                <button class="toolbar-btn" data-badge-state="loading">Skeleton</button>
+                <button class="toolbar-btn" data-badge-state="critical">Alert</button>
+              </div>
+            </div>
+
+            <div class="toolbar-group">
+              <span class="toolbar-label">Density:</span>
+              <div class="toolbar-btn-group">
+                <button class="toolbar-btn data-badge-density" data-badge-density="compact">Compact (24px)</button>
+                <button class="toolbar-btn active data-badge-density" data-badge-density="comfortable">Comfortable (32px)</button>
+              </div>
+            </div>
+
+            <button id="modal-toggle-dev-mode-btn" class="btn-secondary" style="padding: 4px 10px; font-size: 11px; font-family: var(--font-mono); color: var(--accent-copper);">
+              Dev Mode: OFF (Inspect Tokens)
+            </button>
+          </div>
+
+          <div class="badges-matrix-grid">
+            <div class="badge-demo-cell dev-mode-target">
+              <div class="dev-annotation-tag" style="top: 2px; left: 2px;">p: 6px 12px | gap: 6px</div>
+              <span class="badge-token-label">Nominal Status</span>
+              <span class="prism-status-badge nominal comfortable">
+                <span class="status-dot-pulse" style="width: 5px; height: 5px;"></span>
+                <span>Active 99.8%</span>
+              </span>
+              <span class="badge-token-label" style="font-size: 9px;">var(--status-nominal)</span>
+            </div>
+
+            <div class="badge-demo-cell dev-mode-target">
+              <div class="dev-annotation-tag" style="top: 2px; left: 2px;">p: 6px 12px | gap: 6px</div>
+              <span class="badge-token-label">Warning Status</span>
+              <span class="prism-status-badge warning comfortable">
+                <span>⚠ 54% Drift</span>
+              </span>
+              <span class="badge-token-label" style="font-size: 9px;">var(--status-warning)</span>
+            </div>
+
+            <div class="badge-demo-cell dev-mode-target">
+              <div class="dev-annotation-tag" style="top: 2px; left: 2px;">p: 6px 12px | gap: 6px</div>
+              <span class="badge-token-label">Critical Status</span>
+              <span class="prism-status-badge critical comfortable">
+                <span>⛔ 78% Attrition</span>
+              </span>
+              <span class="badge-token-label" style="font-size: 9px;">var(--status-critical)</span>
+            </div>
+
+            <div class="badge-demo-cell dev-mode-target">
+              <div class="dev-annotation-tag" style="top: 2px; left: 2px;">p: 6px 12px | gap: 6px</div>
+              <span class="badge-token-label">Informational</span>
+              <span class="prism-status-badge info comfortable">
+                <span>ℹ SLA Locked</span>
+              </span>
+              <span class="badge-token-label" style="font-size: 9px;">var(--status-info)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

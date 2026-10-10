@@ -1,0 +1,179 @@
+/* ==========================================================================
+   SHUBHAM KUMAR — PORTFOLIO DESIGN SYSTEM
+   Template Reference: Figma Editorial Warm Palette + Swiss Precision
+   Spec: docs/handoff/03_DESIGN_SYSTEM_SPEC.md & Figma Reference Screenshots
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ==========================================================================
+     COLOR TOKENS (Exact Figma Template Palette)
+     ========================================================================== */
+  --canvas:              #FBF1E6;   /* Warm peachy-cream canvas background */
+  --canvas-subtle:       #F7EADB;   /* Slightly deeper warm cream for about block */
+  --surface-card:        #FFFFFF;   /* Crisp white for work cards */
+  --surface-elevated:    #FFFFFF;
+  --surface-recessed:    #F7EADB;
+  --surface-code:        #F5EBE0;
+
+  /* Ink & Typography */
+  --ink-primary:         #1E293B;   /* Deep charcoal slate for serif headlines */
+  --ink-secondary:       #555E6D;   /* Refined body text */
+  --ink-tertiary:        #848E9F;   /* Muted captions & metadata */
+  --ink-ghost:           #B0B9C6;
+
+  /* Accent & Buttons */
+  --btn-primary-bg:      #344054;   /* Dark slate charcoal from template */
+  --btn-primary-hover:   #1E293B;
+  --btn-primary-text:    #FFFFFF;
+  
+  --btn-secondary-bg:    #FBF1E6;   /* Warm outline button from template */
+  --btn-secondary-border:#344054;
+  --btn-secondary-text:  #344054;
+
+  --pill-tag-bg:         #FEEEDD;   /* Pill tag peach fill */
+  --pill-tag-border:     rgba(220, 150, 80, 0.35);
+  --pill-tag-text:       #934F1A;   /* Warm cognac text */
+
+  --accent-blue:         #2563EB;   /* Case study link accent */
+  --accent-copper:       #B87333;   /* Copper precision metric accent */
+  --hairline:            rgba(0, 0, 0, 0.07);
+  --hairline-strong:     rgba(0, 0, 0, 0.14);
+
+  /* Semantic Status Tokens */
+  --status-nominal:      #16A34A;
+  --status-warning:      #D97706;
+  --status-critical:     #DC2626;
+  --status-info:         #2563EB;
+  --status-nominal-bg:   rgba(22, 163, 74, 0.1);
+  --status-warning-bg:   rgba(217, 119, 6, 0.1);
+  --status-critical-bg:  rgba(220, 38, 38, 0.1);
+  --status-info-bg:      rgba(37, 99, 235, 0.1);
+  --accent-subtle:       #B87333;
+  --accent-subtle-muted: rgba(184, 115, 51, 0.12);
+
+  /* Typography Stacks */
+  --font-serif:          'Fraunces', Georgia, serif;
+  --font-sans:           'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono:           'JetBrains Mono', ui-monospace, monospace;
+
+  /* Typography Scale */
+  --type-display-hero:   clamp(2.75rem, 5vw, 3.65rem); /* 44px - 58px */
+  --type-display-section:clamp(2rem, 3.5vw, 2.35rem);   /* 32px - 38px */
+  --type-display-card:   1.75rem;                       /* 28px */
+  --type-body-lead:      1.125rem;                      /* 18px */
+  --type-body-md:        1rem;                          /* 16px */
+  --type-body-sm:        0.9375rem;                     /* 15px */
+  --type-caption:        0.8125rem;                     /* 13px */
+
+  /* Spatial Scale */
+  --space-1:             4px;
+  --space-2:             8px;
+  --space-3:             12px;
+  --space-4:             16px;
+  --space-5:             24px;
+  --space-6:             32px;
+  --space-8:             48px;
+  --space-10:            64px;
+  --space-12:            80px;
+  --space-16:            96px;
+
+  /* Border Radii */
+  --radius-xs:           4px;
+  --radius-sm:           8px;
+  --radius-md:           12px;
+  --radius-lg:           16px;
+  --radius-xl:           24px;
+  --radius-btn:          10px;
+  --radius-card:         24px;
+  --radius-full:         9999px;
+
+  /* Elevation Shadows */
+  --shadow-none:         none;
+  --shadow-xs:           0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm:           0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md:           0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg:           0 12px 32px rgba(0, 0, 0, 0.12);
+  --shadow-card:         0 8px 30px rgba(60, 40, 20, 0.04);
+  --shadow-card-hover:   0 14px 40px rgba(60, 40, 20, 0.07);
+  --shadow-dropdown:     0 12px 36px rgba(0, 0, 0, 0.12);
+
+  /* Animation & Motion Tokens */
+  --ease-out:            cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:         cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-spring:         cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast:       140ms;
+  --duration-normal:     220ms;
+  --duration-slow:       360ms;
+
+  /* Layout Widths */
+  --container-max:       1120px;
+  --editorial-max:       760px;
+}
+
+/* Base Reset & Global Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--canvas);
+  color: var(--ink-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--canvas);
+  color: var(--ink-secondary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--ink-primary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  color: var(--ink-secondary);
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+}

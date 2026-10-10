@@ -1,0 +1,326 @@
+/* ==========================================================================
+   HEAVY ANIMATION ENGINE & DYNAMIC MOTION SUITE
+   Author: Shubham Kumar Portfolio
+   Features: Floating elements, 3D card tilt, sonar radar pings,
+             spring physics, shimmer lights, sparkline draws, ripple rings
+   ========================================================================== */
+
+/* ==========================================================================
+   1. KEYFRAMES
+   ========================================================================== */
+
+/* Smooth Continuous Levitation (Hero Avatar & Badges) */
+@keyframes floatLevitate {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.8deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes floatBadge1 {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.03);
+  }
+}
+
+@keyframes floatBadge2 {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(10px) scale(0.98);
+  }
+}
+
+/* Radar Sonar Ping Concentric Waves */
+@keyframes sonarPing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Pulsing Multi-Ring Ripple for Status Indicators */
+@keyframes ripplePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6), 0 0 0 0 rgba(22, 163, 74, 0.3);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(22, 163, 74, 0), 0 0 0 16px rgba(22, 163, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0), 0 0 0 0 rgba(22, 163, 74, 0);
+  }
+}
+
+/* Shimmer Light Sweeping Across Cards */
+@keyframes shimmerPass {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+/* Glow Border Breathing */
+@keyframes glowBreathe {
+  0%, 100% {
+    border-color: rgba(52, 64, 84, 0.15);
+    box-shadow: 0 8px 30px rgba(60, 40, 20, 0.04);
+  }
+  50% {
+    border-color: rgba(184, 115, 51, 0.4);
+    box-shadow: 0 12px 36px rgba(184, 115, 51, 0.12);
+  }
+}
+
+/* Sparkline SVG Draw-in */
+@keyframes drawSparkline {
+  from {
+    stroke-dashoffset: 120;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Counter / Gauge Fill Expansion */
+@keyframes fillGauge {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--target-width, 72%);
+  }
+}
+
+/* Confetti / Particle Pop on Submit */
+@keyframes successPop {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   2. HERO INTERACTIVE ANIMATIONS & FLOATING BADGES
+   ========================================================================== */
+.hero-avatar-wrapper {
+  position: relative;
+  animation: floatLevitate 6s ease-in-out infinite;
+}
+
+.hero-avatar-wrapper:hover {
+  animation-play-state: paused;
+}
+
+/* Floating interactive chips on Hero */
+.floating-pill {
+  position: absolute;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-primary);
+  pointer-events: auto;
+  cursor: default;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.floating-pill:hover {
+  transform: scale(1.12) !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.14);
+}
+
+.floating-pill.pill-top-left {
+  top: 10px;
+  left: -20px;
+  animation: floatBadge1 5s ease-in-out infinite;
+}
+
+.floating-pill.pill-bottom-right {
+  bottom: 30px;
+  right: -20px;
+  animation: floatBadge2 5.5s ease-in-out infinite;
+}
+
+.floating-pill.pill-top-right {
+  top: 60px;
+  right: -24px;
+  animation: floatBadge1 6s ease-in-out infinite 0.8s;
+}
+
+@media (max-width: 900px) {
+  .floating-pill {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   3. SCROLL-REVEAL SYSTEM (Intersection Observer Clamping)
+   ========================================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Stagger delay helpers */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+/* ==========================================================================
+   4. 3D CARD TILT & SHIMMER HIGHLIGHTS
+   ========================================================================== */
+.work-card {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1),
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
+}
+
+/* Continuous Subtle Shimmer Beam across work cards */
+.work-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.work-card:hover::before {
+  opacity: 1;
+  animation: shimmerPass 1.4s ease-in-out;
+}
+
+/* Magnetic Button Animation */
+.btn-primary, .btn-secondary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-primary:hover::after {
+  transform: translateX(100%);
+}
+
+/* ==========================================================================
+   5. LIVE PROTOTYPE HEAVY ANIMATIONS
+   ========================================================================== */
+
+/* Sparkline Drawing */
+.sparkline-path {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 0;
+  animation: drawSparkline 1.8s ease-out forwards;
+}
+
+/* Status Dot Wave */
+.status-dot-pulse {
+  animation: ripplePulse 2.2s infinite;
+}
+
+/* Radar Concentric Waves */
+.radar-sonar-emitter {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--status-nominal);
+  display: inline-block;
+}
+
+.radar-sonar-emitter::before,
+.radar-sonar-emitter::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--status-nominal);
+  animation: sonarPing 2.4s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+.radar-sonar-emitter::after {
+  animation-delay: 1.2s;
+}
+
+/* Switch Physics Spring Bounce */
+.switch-control::after {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s ease !important;
+}
+
+/* Fare Pill Expand Spring */
+.uber-fare-pill-card {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.fare-breakdown-details {
+  transform-origin: top;
+  animation: successPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modal Spring Scale Zoom */
+.case-study-modal.open .modal-content-container {
+  animation: successPop 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
