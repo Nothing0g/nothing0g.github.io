@@ -7,11 +7,39 @@
 document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   init3DCardTilt();
+  initHeroMotion();
   initNavigationAndModals();
   initRetainOSPrototype();
   initUberPrototypes();
   initPrismPlaygrounds();
 });
+
+/* ============================================================================
+   0. HERO SPATIAL CONTINUITY (quiet pointer response, not a carousel effect)
+   ============================================================================ */
+function initHeroMotion() {
+  const hero = document.querySelector('.hero-avatar-wrapper');
+  if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let frame;
+
+  hero.addEventListener('pointermove', (event) => {
+    const rect = hero.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
+      hero.style.setProperty('--hero-x', `${(x * 8).toFixed(2)}px`);
+      hero.style.setProperty('--hero-y', `${(y * 8).toFixed(2)}px`);
+      hero.style.setProperty('--hero-rotate', `${(x * 1.2).toFixed(2)}deg`);
+    });
+  });
+
+  hero.addEventListener('pointerleave', () => {
+    hero.style.setProperty('--hero-x', '0px');
+    hero.style.setProperty('--hero-y', '0px');
+    hero.style.setProperty('--hero-rotate', '0deg');
+  });
+}
 
 /* ==========================================================================
    1. SCROLL REVEAL ANIMATION ENGINE (IntersectionObserver)
